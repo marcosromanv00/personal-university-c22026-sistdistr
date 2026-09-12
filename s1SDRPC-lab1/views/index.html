@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+ 
+<head>
+ 
+    <meta charset="UTF-8">
+ 
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+ 
+    <title>Aplicación RPC</title>
+ 
+    <link rel="stylesheet"
+          href="/css/estilos.css">
+ 
+</head>
+ 
+<body>
+ 
+    <header>
+ 
+        <h1>Marcos Román Valverde</h1>
+ 
+        <p>
+            Consumo de dos servicios JSON-RPC externos
+        </p>
+ 
+    </header>
+ 
+ 
+    <main>
+ 
+        <!-- ================================================= -->
+        <!-- ETHEREUM -->
+        <!-- ================================================= -->
+ 
+        <section class="tarjeta">
+ 
+            <h2>Ethereum</h2>
+ 
+            <p>
+                Información obtenida mediante JSON-RPC
+            </p>
+ 
+            <div class="dato">
+ 
+                <span>Número del bloque:</span>
+ 
+                <strong id="ethereum-block">
+                    Cargando...
+                </strong>
+ 
+            </div>
+ 
+            <div class="dato">
+ 
+                <span>Servidor:</span>
+ 
+                <strong>
+                    Cloudflare Ethereum Gateway
+                </strong>
+ 
+            </div>
+ 
+            <div class="dato">
+ 
+                <span>Método RPC:</span>
+ 
+                <strong>
+                    eth_blockNumber
+                </strong>
+ 
+            </div>
+ 
+        </section>
+ 
+ 
+        <!-- ================================================= -->
+        <!-- SOLANA -->
+        <!-- ================================================= -->
+ 
+        <section class="tarjeta">
+ 
+            <h2>Solana</h2>
+ 
+            <p>
+                Información obtenida mediante JSON-RPC
+            </p>
+ 
+            <div class="dato">
+ 
+                <span>Epoch actual:</span>
+ 
+                <strong id="solana-epoch">
+                    Cargando...
+                </strong>
+ 
+            </div>
+ 
+            <div class="dato">
+ 
+                <span>Block Height:</span>
+ 
+                <strong id="solana-block">
+                    Cargando...
+                </strong>
+ 
+            </div>
+ 
+            <div class="dato">
+ 
+                <span>Slot:</span>
+ 
+                <strong id="solana-slot">
+                    Cargando...
+                </strong>
+ 
+            </div>
+ 
+            <div class="dato">
+ 
+                <span>Método RPC:</span>
+ 
+                <strong>
+                    getEpochInfo
+                </strong>
+ 
+            </div>
+ 
+        </section>
+ 
+ 
+        <section class="resultado">
+ 
+            <h2>Respuesta JSON-RPC</h2>
+ 
+            <pre id="json">
+Cargando información...
+            </pre>
+ 
+        </section>
+ 
+    </main>
+ 
+ 
+    <footer>
+ 
+        <p>
+            Node.js + Express + JSON-RPC
+        </p>
+ 
+    </footer>
+ 
+    <script>
+ 
+        async function cargarDatosRPC() {
+ 
+            try {
+ 
+                const respuesta =
+                    await fetch("/api/rpc");
+ 
+ 
+                const datos =
+                    await respuesta.json();
+ 
+ 
+                console.log(
+                    "Respuesta RPC:",
+                    datos
+                );
+ 
+ 
+                // =================================================
+                // MOSTRAR JSON COMPLETO
+                // =================================================
+ 
+                document.getElementById(
+                    "json"
+                ).textContent =
+                    JSON.stringify(
+                        datos,
+                        null,
+                        2
+                    );
+ 
+ 
+                // =================================================
+                // ETHEREUM
+                // =================================================
+ 
+                if (
+                    datos.ethereum &&
+                    datos.ethereum.result
+                ) {
+ 
+                    const bloqueHex =
+                        datos.ethereum.result;
+ 
+ 
+                    const bloqueDecimal =
+                        parseInt(
+                            bloqueHex,
+                            16
+                        );
+ 
+ 
+                    document.getElementById(
+                        "ethereum-block"
+                    ).textContent =
+                        bloqueDecimal;
+ 
+                }
+                else if (
+                    datos.ethereum &&
+                    datos.ethereum.error
+                ) {
+ 
+                    document.getElementById(
+                        "ethereum-block"
+                    ).textContent =
+                        "Error RPC";
+ 
+                }
+                else {
+ 
+                    document.getElementById(
+                        "ethereum-block"
+                    ).textContent =
+                        "No disponible";
+ 
+                }
+ 
+ 
+                // =================================================
+                // SOLANA
+                // =================================================
+ 
+                if (
+                    datos.solana &&
+                    datos.solana.result
+                ) {
+ 
+                    const solana =
+                        datos.solana.result;
+ 
+ 
+                    document.getElementById(
+                        "solana-epoch"
+                    ).textContent =
+                        solana.epoch;
+ 
+ 
+                    document.getElementById(
+                        "solana-block"
+                    ).textContent =
+                        solana.blockHeight;
+ 
+ 
+                    document.getElementById(
+                        "solana-slot"
+                    ).textContent =
+                        solana.absoluteSlot;
+ 
+                }
+                else if (
+                    datos.solana &&
+                    datos.solana.error
+                ) {
+ 
+                    document.getElementById(
+                        "solana-epoch"
+                    ).textContent =
+                        "Error RPC";
+ 
+ 
+                    document.getElementById(
+                        "solana-block"
+                    ).textContent =
+                        "Error RPC";
+ 
+ 
+                    document.getElementById(
+                        "solana-slot"
+                    ).textContent =
+                        "Error RPC";
+ 
+                }
+                else {
+ 
+                    document.getElementById(
+                        "solana-epoch"
+                    ).textContent =
+                        "No disponible";
+ 
+ 
+                    document.getElementById(
+                        "solana-block"
+                    ).textContent =
+                        "No disponible";
+ 
+ 
+                    document.getElementById(
+                        "solana-slot"
+                    ).textContent =
+                        "No disponible";
+ 
+                }
+ 
+ 
+            } catch (error) {
+ 
+                console.error(error);
+ 
+ 
+                document.getElementById(
+                    "json"
+                ).textContent =
+                    "Error: " +
+                    error.message;
+ 
+            }
+ 
+        }
+ 
+ 
+        cargarDatosRPC();
+ 
+    </script>
+</body>
+</html>

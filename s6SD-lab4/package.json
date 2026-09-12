@@ -1,0 +1,13 @@
+{
+  "name": "s6-sw",
+  "version": "1.0.0",
+  "description": "Ejemplo de microfrontends con Node.js, Express y datos satelitales de NASA",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

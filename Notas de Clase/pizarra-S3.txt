@@ -1,0 +1,192 @@
+1.Review de temas anteriores.
+2.Chequeo de donde quedamos -: REST
+	-Prácticas de código
+		-Analizamos comunicación
+		-Llamados
+		-Respuestas
+			-Datos obtenidos de las respuestas
+3-Vamos a crear grupos de trabajo
+	-al final de la clase de semana 3
+
+
+4-Recueden ser puntuales a la hora de inciar las evaluaciones
+	-Trataremos de iniciar en un tiempo específico, y terminar todos en un momento específico para llevar un orden.
+	-Tratemos de estar pendiente de cuando se hace la evaluación:
+		-Se tratará de hacerla antes del break
+
+5-Para el lab de hoy, cambiar el título de la pantalla principal "index.html" e incluir su nombre y mandar
+	-hacer el lab y mandar la captura de pantalla que se vea el IDE de VS Code y la ejecuciópn del programa.
+
+********************************
+
+------------------------
+
+-Extendemos información de la clase pasada sobre qué son:
+	-API: concepto general de comunicación entre aplicaciones.
+	-REST: arquitectura orientada a recursos, ideal para servicios CRUD y APIs web tradicionales.
+	-RPC: modelo orientado a ejecutar funciones remotas, muy utilizado en sistemas distribuidos y rendimiento
+	
+	-Características entre REST y RPC:
+		-Caract. Conceptualmente
+			-REST: recurso
+			-RPC: método/procedimiento
+
+		-Caract. Ejemplo:
+			-REST: user/10
+			-RPC: getEpochInfo
+
+		-Caract. uso típico de HTTP
+			-REST: get, post, put, delete
+			-RPC: post
+	
+		-Caract. parámetros
+			-REST: URL/body/query
+			-RPC: params
+
+		-Caract. Operación
+			-REST: trabajar implícitamente con HTTP/URL
+			-RPC: usar explícitamente el método
+
+		-Caract. Respuesta
+			-REST: normalmente es un JSON
+			-RPC: objeto tipo JSON-RPC
+
+--------------------------
+NOTA de tener mucho cuidado:
+Especialización conexión con servidores en arquitecturas distribuidas
+	-La cantidad de servidores para RPC para conexión dinámica y vigente, a veces es escasa. 
+		-No es lo mismos que encontrar servidores para REST
+			-la razón es que se vuelven obsoletos, o comienzan a monetizar 
+
+--------------------------
+Nota-recordatorio: el lab de hoy tienen que enviar al final de lección.
+	-es responsabilidad de cuidar el archivos que manden
+		-se evalúa lo que envíen
+		-velar por los recursos necesarios.
+	-enviar 2 prints screens de la app funcionando en sus máquinas.
+..........
+1.Práctica sobre RPC
+2.Recomendaciones antes de codificar:
+	-localizar servicio distribuido vigente
+	-entender el tipo de retorno de dato del "método"
+	-saber como procesarlo
+3.OJO: el RPC no lo hace la navegador lo hace el servidor, por ejemplo, "express"
+4.Crear el folder o carpeta de la app.
+	-ejemplo nombre: swRPC
+5.Ingresen a la carpeta "swRPC"
+	-npm init -y o npm init
+		-uno hace preguntas
+		-el otro
+6.Ingresen a la carpeta "swRPC"
+	-npm install express
+7.Ingresen a la carpeta "swRPC", verificar versión
+	-node -v
+		-para verificar que sea superior al v24
+			-importante para trabajar con "fetch()"
+8.Crear estructura de la app para hacer RPC
+	-verificar archivo "package.json"
+		-y hacer ajustes con el contenido enviado por teams
+	-en "app.js"
+		-ingresar el contenido enviado por teams
+	-crear servicios - folder y archivo
+		-services/rpcService.js
+			-ingresar el contenido enviado por teams
+
+		------------
+		NOTAS:
+	
+		-¿por qué trabajar con control eventos-errores?
+			R/enfoque, es porque los proveedores de los sistemas distribuidos puede hacer "wrapping" de los eventos de errores
+			-es "envoltorio" -: es diferente a los tipos errores de 401, 500, etc.
+				-puede incluir
+					-controlar errores de comunicación del protocolo en sistemas Dist.
+					-controlar errores provenientes de la "data"
+		------------
+
+
+
+	-crear routes - folder y archivo
+		-routes/rpcRoutes.js
+			-ingresar el contenido enviado por teams
+		-¿la ruta base "/"?
+			-se ejecuta primero
+
+
+
+		------------
+		NOTAS:
+
+		-¿por qué no usamos "controles"?
+			-R/Por enfoque de capas o nivel, pero enfocados servicios de "sistemas distribuidos", ejemplo dominios "distribuidos"	
+			-"Dominio Distribuido" se habla de esta forma, porque un servicio o app, puede estar segmentada en varios dominios
+		-dominio
+			es URL
+		------------
+
+	-crear views/index.html
+		-ingresar el contenido enviado por teams
+			-Entender que se pude también validar otros niveles de errores tanto:
+				-protocolo (ejemplo visto en servicios)
+				-datos (ejemplo visto en servicios)
+				-resultados esperados (ejemplo visto en la interface (html))
+		------------
+		NOTAS:
+
+		-¿la disponibilidad de datos y errores de datos son diferentes?
+			R/sí, tomar nota de lo que el profesor acaba de explicar
+		------------
+
+	
+
+	-crear public/css/estilos.css
+		-ingresar el contenido enviado por teams
+
+
+	-tomar nota de la explicación de la parte de "network"/headers/response/timing, y de su utilidad
+		-herramientas de visualización y análisis de respuesta de protocolos, e información de la comunicación del servicio distribuido.
+
+
+------------
+NOTAS:
+1.¿Cuándo tomar la decisión de pasar de modelo (RPC) a una arquitectura (REST)?
+	R/Según necesidades de negocio que afecten la infractraestructura de comunicación y datos, y que necesite escalar
+		-Escalabilidad
+			-horizontal - scale out
+				-cantidad de instancias
+			-vertical  - scale up
+				-recursos: máquinas				-
+
+2-Estilos de APIs vs Arquitecturas de implementación general
+	-REST
+		-qué es?
+			-esto visto
+	-RPC
+		-qué es?
+			-esto visto
+	-API hibrida
+		-qué es?
+			-combinación de estilos	
+	-API poliglota
+		-qué es?
+			-distintos lenguajes/tecnologías -: según el servicio
+------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

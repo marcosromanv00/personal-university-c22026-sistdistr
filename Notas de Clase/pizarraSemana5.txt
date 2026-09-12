@@ -1,0 +1,205 @@
+1.Agregamos más miembros a grupos de trabajo
+	-actualizar el archivo en el aula virtual
+2.Aclaramos que hoy no va a ver quiz, y se sustituye por una activadad en clase
+	-se aclara qué de la semana 4 tomar para el quiz de la semana 6
+		-para el quiz la semana 6 considera lo de la semana 5
+3.Estar pendientes del aula virtual no solo para material del quiz, sino para que revisen
+	-la primer tarea o proyecto
+	
+*******************************
+1.Postman vs Thunde Client
+	-Postman
+		-Enviroment:
+			-Standalone/web app
+		-Performance:
+			-mas pesado
+		-Protocolos:
+			-REST
+			-GraphQL
+			-gRPC
+			-WebSockets
+	-Thunde Client
+		-Enviroment:
+			-Extensión de VS Code 
+		-Performance:
+			-lightweight
+		-Protocolos:
+			-REST
+			-GraphQL
+			
+			
+2.Ambiente de simulación de prueba de sistema distribuido
+	-Nuestra APP (sistema A, en un ambiente)
+		-publica endpoint
+			-para ser consumido
+	-APP de terceros o servicios (sistema B, en un ambiente)
+	-PostMan - Otra APP (sistema C, en "otro ambiente")
+		-para poder demostrar conceptualmente como hacer "reach" a nuestras "publicaciones"
+			-pretendiendo expresar que el "localhost" un dominio privado en línea
+				-y consumir sus recursos
+	
+-------------
+Ejercicio en clase - Práctica o LAB
+
+1.Crear la carpeta de app que vamos a trabajar
+	-por ejemplo: S5-SW
+	
+2.Entrar a la carpeta desde la terminal y correr: 		-sustituirlo con el contenido enviado por teams
+	-npm init -y
+	
+3.Entrar a la carpeta desde la terminal y correr:
+	-npm intall express
+	
+4.crear "app.js": -ingresar con el contenido enviado por teams
+	-el segmento:
+			app.use(
+				"/api/finanzas",
+				finanzasRoutes
+			);
+				-nos va a permitir ejemplificar "la publicación" de un servicio
+					-significa poner una funcionalidad "disponible" mediante:
+						-dirección/end-point
+							-para que otros clientes ("app, ambientes, sistemas, servicios") lo puedan invocar
+							
+5.crear el archivo "services/finanzasService.js": -ingresar con el contenido enviado por teams
+	-en técnicas de arquitectura de sistema distribuidos es imperante diferenciar entre:
+		-bloques de tipos de errores
+			-analizar las razones del error a la hora de ingestar la información de servicios en Sist. Dist.
+				-ejemplo:
+							bitcoin:
+								resultados[0].status === "fulfilled"
+
+									? resultados[0].value
+
+									: {
+										error:
+											resultados[0].reason.message
+									},
+					
+		-técnica de invocación y ejecución de los servicios en Siste. Distr.
+	-Diferencias con respecto a "Promise.allSettled" vs "Promise.all" - poner atención al profesor
+	-DNS: -"DNS resolution"
+		-nombre del DNS	
+			-es traducido
+				-dirección ip
+					-al servidor del cual consumir o ingestar datos.
+	-el fetch 
+		-debe de coincidir, con la resolución del DNS
+
+NOTA: 
+	-en la vida real los servicios a consumir tinen muchas restricciones
+		-de accesos
+			-cantidad de solicitudes
+		-solicitudes
+			-tiempo
+		-de tipos de datos e información
+			-puedan o no tener acceso
+		-integración
+			-manejar funcionamiento correcto
+				-manejo de errores
+					-por ejemplo:
+						-el servicio está mal configurado
+						-la solicitud es incorrecta
+						-la infraestructura:
+							-el ambiente del contenedor está mal?
+							-la máquina virtual está mal configurada?
+							
+		-¿los errores en los módulos de "servicios", son indeferentes de su manejo, es decir, basta un try-catch?
+		R/no, no son indiferentes, y no basta con un try-catch
+		
+6.crear el archivo "routes/finanzasRoutes.js": -ingresar con el contenido enviado por teams
+	-"fs" - file system
+	
+	-¿el manejo de errores, ejemplo, try-catch, del módulo de servicios, es igual o indiferente, al try-catch del módulo de routes?
+		-Enfoque de servicios
+			-ingest/deploy interno
+			-ingest/deploy externo
+		-R/no, son igual para efecto de arquitectura y durante el ingest/deploy
+				-por la manera en que se incorpora el código al build/deploy - es parte es obvia... pero...
+				-y como se comportan en runtime
+				-CLAVE:
+					-throw new error <---------ARQUITECTURA Y DISEÑO DE LA APLICACIÓN (PROMISE) Y FORMA DE CONSUMIR Y "PROPAGACIÓN del error" 
+						-el servicio captura el error y después lo vuelve a lanzar (no es la única razón, pero para nuestro es aplicable)
+							-servicio progaga
+				-ejemplo:
+						Request
+							Route
+								Service
+									Microservicio
+										ERROR
+											catch del Service
+												throw
+													catch de Route
+														HTTP Response
+
+NOTa:
+	-¿qué simboliza ingresar la información en archivo de texto proveniente de los servicios de recursos distribuidos, vistos en clase?
+		R/simboliza, representar:
+			-El dominio del servicio de nuesta app.
+			-Ingerir y persistir datos de servicios distribuidos
+			-la premisa para diseñar y estructurar la capa de datos
+				-generar ejemplos de datos	
+				-mocks de datos	
+					-se pueden delinear datosa para realizar pruebas unitarias, en funciones en capa de lógica de negocio
+				-historicos o logs (diagnósticos)
+
+
+7.crear archivo "public/js/app.js" - ingresar con el contenido enviado por teams
+	-tomar nota que el nombre es igual para demostrar
+		-que no necesariamente los recuersos deben de tener diferentes nombres
+		
+NOTA:
+	- ojo - la diferencia entre el punto de entrada de la app y el punto de llamado a la ruta base del servicio
+	-¿tendrá sentido implementar en el archivo "public/js/app.js" un "throw new" o "throw"
+		R/no tiene sentido, porque la implementacion está en el misma capa.
+	
+	-¿a nivel de arquitectura de sistemas distribuidos, se puede generar el "andamiaje" de manejo de información como si fuera un servicio, pero para persistir datos en un simple archivo, por ejemplo, .txt?
+		R/sí, ver ejemplo:
+			
+                const respuesta =
+                    await fetch(
+                        "/api/finanzas/guardar",
+                        {
+
+                            method:
+                                "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    informacion
+                                )
+
+                        }
+                    );		
+
+8.crear el archivo "public/css/estilos.css" : -ingresar con el contenido enviado por teams
+	
+9.crear el archivo "views/index.html": -ingresar con el contenido enviado por teams
+
+10.crear el archivo "data/historial.txt"
+
+11.correr nuestra app.
+	-npm start
+	
+NOTA:
+		-PONER ATENCIÓN al profesor, sobre qué representaba nuestro aplicativo de servicio.
+	
+NOTA:
+Al final incluir como parte de la práctica de hoy:
+	-PrintScreen 
+		-se vea la estructura de app.
+		-la terminal corriendo sin errores
+		-y la app del explorer
+		-Postman
+
+
+
+
+

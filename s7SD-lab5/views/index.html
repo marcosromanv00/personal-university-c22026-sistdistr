@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+ 
+<html lang="es">
+ 
+<head>
+ 
+    <meta charset="UTF-8">
+ 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+ 
+    <title>UNA - 2026 - DS - FaaS Event Manager</title>
+ 
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="/css/estilos.css"
+    >
+ 
+</head>
+ 
+ 
+<body>
+ 
+ 
+<!-- ============================================
+     ENCABEZADO
+============================================ -->
+ 
+<header>
+ 
+    <h1>UNA - 2026 - FaaS Event Manager</h1>
+ 
+    <p>
+        Sistemas Distribuidos FaaS basada en Web Serv. Usando + Cloudflare Workers
+    </p>
+ 
+</header>
+ 
+ 
+ 
+<main class="contenedor">
+ 
+ 
+    <!-- ========================================
+         PUNTO 1
+ 
+         EVENT-DRIVEN
+    ========================================= -->
+ 
+    <section class="tarjeta">
+ 
+        <div class="numero">
+ 
+            1
+ 
+        </div>
+ 
+        <h2>-- UNA - Evento HTTP</h2>
+ 
+        <p>
+ 
+            Un botón genera un evento que
+            ejecuta una función FaaS en Cloud.
+ 
+        </p>
+ 
+        <button onclick="ejecutarEvento()">
+ 
+            Generar Evento
+ 
+        </button>
+ 
+    </section>
+ 
+ 
+ 
+    <!-- ========================================
+         PUNTO 2
+ 
+         PROPIEDADES DE LAS FUNCIONES
+    ========================================= -->
+ 
+    <section class="tarjeta">
+ 
+        <div class="numero">
+ 
+            2
+ 
+        </div>
+ 
+        <h2>^^ UNA - Función Independiente</h2>
+ 
+        <p>
+ 
+            Ejecuta una función con una única
+            responsabilidad.
+ 
+        </p>
+ 
+        <button onclick="ejecutarFuncion()">
+ 
+            Ejecutar Función
+ 
+        </button>
+ 
+    </section>
+ 
+ 
+ 
+    <!-- ========================================
+         PUNTO 3
+ 
+         TRIGGERS Y SCHEDULERS
+    ========================================= -->
+ 
+    <section class="tarjeta">
+ 
+        <div class="numero">
+ 
+            3
+ 
+        </div>
+ 
+        <h2>** UNA - Planificador</h2>
+ 
+        <p>
+ 
+            La función también puede ejecutarse
+            automáticamente mediante Cron.
+ 
+        </p>
+ 
+        <button onclick="mostrarScheduler()">
+ 
+            Ver Planificador
+ 
+        </button>
+ 
+    </section>
+ 
+ 
+ 
+    <!-- ========================================
+         RESULTADO
+    ========================================= -->
+ 
+    <section
+        id="resultado"
+        class="resultado"
+    >
+ 
+        <h2>OJO: Estado del sistema</h2>
+ 
+        <p id="mensaje">
+ 
+            Esperando un evento...
+ 
+        </p>
+ 
+    </section>
+ 
+ 
+</main>
+ 
+ 
+ 
+<!-- JavaScript del navegador -->
+ 
+<script src="/js/app.js"></script>
+ 
+ 
+</body>
+ 
+</html>

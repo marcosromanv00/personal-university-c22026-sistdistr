@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bases Aprendidas del Curso de Sistemas Distribuidos - Ensayo Académico</title>
+    <style>
+        /* ============================================================
+           ESTILOS GENERALES Y CONFIGURACIÓN SOBRIA EN BLANCO Y NEGRO
+           ============================================================ */
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #111111;
+            font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+            font-size: 11pt;
+            line-height: 1.7;
+            text-align: justify;
+            text-justify: inter-word;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Contenedor tipo Hoja de Documento */
+        .document-container {
+            max-width: 850px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 80px 90px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+        }
+
+        /* ============================================================
+           PORTADA (COVER PAGE)
+           ============================================================ */
+        .cover-page {
+            text-align: center;
+            min-height: 920px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 0;
+            page-break-after: always;
+            border-bottom: 2px solid #111111;
+            margin-bottom: 60px;
+        }
+
+        .cover-institution {
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .cover-institution h1 {
+            font-size: 15pt;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 6px;
+        }
+
+        .cover-institution h2 {
+            font-size: 11pt;
+            font-weight: 500;
+            color: #444444;
+            margin-bottom: 4px;
+        }
+
+        .cover-institution h3 {
+            font-size: 10pt;
+            font-weight: 400;
+            color: #666666;
+            letter-spacing: 2px;
+        }
+
+        .cover-main-title {
+            margin: 60px 0;
+        }
+
+        .cover-main-title h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .cover-main-title .subtitle {
+            font-size: 13pt;
+            font-style: italic;
+            color: #444444;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 2px;
+            background-color: #000000;
+            margin: 25px auto;
+        }
+
+        .cover-metadata {
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.6;
+            color: #333333;
+        }
+
+        .cover-metadata p {
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .cover-metadata .meta-label {
+            font-weight: 700;
+            color: #000000;
+        }
+
+        /* ============================================================
+           ÍNDICE DE CONTENIDO
+           ============================================================ */
+        .toc-section {
+            page-break-after: always;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        .toc-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #000000;
+            margin-bottom: 28px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #000000;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 12px;
+            font-size: 10.5pt;
+        }
+
+        .toc-item a {
+            text-decoration: none;
+            color: #111111;
+            font-weight: 500;
+        }
+
+        .toc-item a:hover {
+            text-decoration: underline;
+        }
+
+        .toc-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted #888888;
+            margin: 0 10px;
+            position: relative;
+            top: -4px;
+        }
+
+        .toc-page {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 10pt;
+            color: #000000;
+        }
+
+        /* ============================================================
+           CUERPO DEL ENSAYO Y TIPOGRAFÍA
+           ============================================================ */
+        h2.section-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14pt;
+            font-weight: 700;
+            color: #000000;
+            margin-top: 45px;
+            margin-bottom: 18px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #111111;
+            page-break-after: avoid;
+        }
+
+        h3.subsection-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: #222222;
+            margin-top: 28px;
+            margin-bottom: 12px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-indent: 0;
+        }
+
+        p strong {
+            color: #000000;
+        }
+
+        /* Citas en bloque destacadas */
+        blockquote {
+            margin: 24px 0 24px 30px;
+            padding: 12px 20px;
+            border-left: 3px solid #000000;
+            background-color: #fafafa;
+            font-style: italic;
+            font-size: 10pt;
+            line-height: 1.6;
+            color: #2b2b2b;
+        }
+
+        blockquote .quote-author {
+            display: block;
+            margin-top: 8px;
+            font-style: normal;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 9pt;
+            color: #000000;
+            text-align: right;
+        }
+
+        /* Código y sintaxis */
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            font-size: 9.5pt;
+            border: 1px solid #dcdcdc;
+            color: #111111;
+        }
+
+        pre {
+            background-color: #f7f7f7;
+            border: 1px solid #000000;
+            padding: 14px 18px;
+            margin: 20px 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 9pt;
+            line-height: 1.45;
+            overflow-x: auto;
+            text-align: left;
+        }
+
+        /* ============================================================
+           TABLAS: BORDES NEGROS Y ENCABEZADO OSCURO CON TEXTO BLANCO
+           ============================================================ */
+        .table-wrapper {
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .table-caption {
+            font-family: 'Roboto', sans-serif;
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        table.sober-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #000000;
+            font-size: 9.5pt;
+            line-height: 1.5;
+        }
+
+        table.sober-table th {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px 12px;
+            border: 1px solid #000000;
+            letter-spacing: 0.3px;
+        }
+
+        table.sober-table td {
+            padding: 10px 12px;
+            border: 1px solid #000000;
+            color: #111111;
+            vertical-align: top;
+        }
+
+        table.sober-table tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        table.sober-table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        table.sober-table td strong {
+            color: #000000;
+        }
+
+        /* ============================================================
+           REFERENCIAS BIBLIOGRÁFICAS (FORMATO APA 7)
+           ============================================================ */
+        .references-section {
+            margin-top: 50px;
+            page-break-before: always;
+        }
+
+        .apa-reference {
+            padding-left: 2.5em;
+            text-indent: -2.5em;
+            margin-bottom: 14px;
+            font-size: 9.5pt;
+            line-height: 1.6;
+            color: #222222;
+        }
+
+        .apa-reference a {
+            color: #111111;
+            text-decoration: underline;
+        }
+
+        /* Botón de impresión flotante */
+        .no-print-bar {
+            background: #222222;
+            color: #ffffff;
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 10pt;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .print-btn {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 8px 18px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .print-btn:hover {
+            background: #dddddd;
+        }
+
+        /* ============================================================
+           MEDIOS IMPRESOS / PDF
+           ============================================================ */
+        @media print {
+            body {
+                background: #ffffff;
+                color: #000000;
+                font-size: 10.5pt;
+            }
+
+            .no-print-bar {
+                display: none !important;
+            }
+
+            .document-container {
+                margin: 0;
+                padding: 0;
+                border: none;
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .toc-section {
+                border-bottom: none;
+            }
+
+            @page {
+                size: letter;
+                margin: 2.54cm;
+            }
+
+            h2.section-title {
+                page-break-before: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de utilidades visible solo en pantalla -->
+    <div class="no-print-bar">
+        <span>📄 <strong>Documento Académico:</strong> Ensayo sobre Bases de Sistemas Distribuidos (Formato Sobrio B&W)</span>
+        <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
+    </div>
+
+    <div class="document-container">
+
+        <!-- ============================================================
+             PORTADA
+             ============================================================ -->
+        <div class="cover-page">
+            <div class="cover-institution">
+                <h1>Universidad Nacional de Costa Rica</h1>
+                <h2>Facultad de Ciencias Exactas y Naturales</h2>
+                <h3>Escuela de Informática &bull; Sistemas Distribuidos</h3>
+            </div>
+
+            <div class="cover-main-title">
+                <h1>Bases Aprendidas del Curso de Sistemas Distribuidos</h1>
+                <div class="cover-divider"></div>
+                <div class="subtitle">
+                    Una travesía desde la arquitectura conceptual y los protocolos de comunicación hacia la resiliencia, los microfrontends y la computación serverless en el borde
+                </div>
+            </div>
+
+            <div class="cover-metadata">
+                <p><span class="meta-label">Modalidad:</span> Ensayo Académico y Reflexivo de Cierre</p>
+                <p><span class="meta-label">Estudiante:</span> Marco Murillo</p>
+                <p><span class="meta-label">Docente:</span> M.Sc. Luis Raúl</p>
+                <p><span class="meta-label">Ciclo Lectivo:</span> I Ciclo 2026</p>
+                <p><span class="meta-label">Heredia, Costa Rica</span></p>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             ÍNDICE DE CONTENIDO
+             ============================================================ -->
+        <div class="toc-section">
+            <div class="toc-title">Índice de Contenido</div>
+            <ul class="toc-list">
+                <li class="toc-item">
+                    <a href="#sec1">1. Introducción: El Despertar de la Consciencia Distribuida</a>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">Pág. 3</span>
+                </li>
+                <li class="toc-item">
+                    <a href="#sec2">2. Fundamentos y Fronteras: Arquitectura vs. Sistema Operativo</a>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">Pág. 4</span>
+                </li>
+                <li class="toc-item">
+                    <a href="#sec3">3. El Lenguaje de la Red: Anatomía de Protocolos y el Salto a RPC</a>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">Pág. 6</span>
+                </li>
+                <li class="toc-item">
+                    <a href="#sec4">4. El Dilema de la Ingesta de Datos: De REST y Over-fetching a la Precisión de GraphQL</a>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">Pág. 8</span>
+                </li>
+                <li class="toc-item">
+                    <a href="#sec5">5. La Cruda Realidad del Entorno Distribuido: Resiliencia y la Falacia del "Simple Try-Catch"</a>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">Pág. 11</span>
+                </li>
+                <li class="toc-item">
+                    <a href="#sec6">6. Modularidad Radical: Contenedores, Principios de Diseño y Microfrontends con Shadow DOM</a>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">Pág. 14</span>
+                </li>
+                <li class="toc-item">
+                    <a href="#sec7">7. La Frontera del Cómputo: Paradigma Serverless, FaaS y Edge Computing</a>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">Pág. 17</span>
+                </li>
+                <li class="toc-item">
+                    <a href="#sec8">8. Síntesis y Conclusiones: Lecciones Aprendidas al Pie de la Máquina</a>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">Pág. 19</span>
+                </li>
+                <li class="toc-item">
+                    <a href="#sec9">9. Referencias Bibliográficas (Normativa APA 7ma Edición)</a>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">Pág. 21</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ============================================================
+             SECCIÓN 1: INTRODUCCIÓN
+             ============================================================ -->
+        <h2 id="sec1" class="section-title">1. Introducción: El Despertar de la Consciencia Distribuida</h2>
+        
+        <p>
+            <strong>El salto del paradigma local al distribuido:</strong> Cuando un estudiante de informática da sus primeros pasos en la programación, el universo tecnológico parece ordenado, dócil y determinista. Uno escribe una función en un archivo, la compila o interpreta, y al ejecutarla los datos fluyen a través del bus de memoria local. El procesador sigue las instrucciones en rigurosa sincronía y los fallos son predecibles: una variable mal declarada, una división entre cero o un puntero nulo. Si algo sale mal, el depurador detiene el hilo y el culpable siempre está en las líneas de código que uno mismo escribió.
+        </p>
+        <p>
+            Sin embargo, en el instante en que esa misma aplicación debe comunicarse con un proceso que corre en otra computadora, en un servidor situado a kilómetros de distancia y vinculado por una red física que puede colapsar, congestionarse o degradarse en cualquier momento, todas las viejas certidumbres del desarrollador monolítico se disuelven.
+        </p>
+        <p>
+            El curso de <em>Sistemas Distribuidos</em> ha representado, ante todo, un proceso deconstructivo y de maduración técnica. A lo largo de las lecciones plasmadas en las pizarras virtuales del profesor Luis Raúl y de cada sesión en el laboratorio, no nos limitamos a memorizar definiciones académicas. Nos sentamos frente a la terminal en riguroso entorno Node.js, gestionamos paquetes y versiones, levantamos servidores en Express, disparamos procedimientos remotos contra blockchains reales de Ethereum y Solana, consumimos grafos declarativos con GraphQL, construimos capas de resiliencia financiera con <code>Promise.allSettled</code>, ensamblamos microfrontends satelitales con Web Components nativos y aislados mediante Shadow DOM, y finalmente desplegamos funciones sin servidor en la red de borde de Cloudflare Workers.
+        </p>
+
+        <blockquote>
+            "Un sistema distribuido es aquel en el que el fallo de una computadora que ni siquiera sabías que existía puede hacer que tu propia computadora quede inservible."
+            <span class="quote-author">— Leslie Lamport (Premio Turing de Computación, citado en Tanenbaum & Van Steen, 2017)</span>
+        </blockquote>
+
+        <p>
+            Esa célebre sentencia de Leslie Lamport resume a la perfección el núcleo conceptual de nuestro aprendizaje: la ingeniería de sistemas distribuidos no trata primordialmente de enviar cadenas de texto sobre la red, sino de aprender a diseñar software capaz de sobrevivir en un entorno donde la asincronía, la concurrencia y el fallo inevitable son la norma y no la excepción. El presente ensayo traza un hilo conductor exhaustivo a través de los conceptos impartidos en clase y las prácticas implementadas en el código, contrastando nuestra experiencia de laboratorio con la literatura científica y los clásicos de la computación.
+        </p>
+
+        <!-- ============================================================
+             SECCIÓN 2: FUNDAMENTOS Y FRONTERAS
+             ============================================================ -->
+        <h2 id="sec2" class="section-title">2. Fundamentos y Fronteras: Arquitectura vs. Sistema Operativo</h2>
+
+        <p>
+            <strong>Desmitificando las fronteras conceptuales:</strong> Una de las discusiones iniciales más reveladoras de la primera semana de clases fue trazar una línea divisoria clara entre tres conceptos que en la industria se confunden con frecuencia: los <em>Sistemas Distribuidos</em>, los <em>Microservicios</em> y la <em>Programación Web</em>.
+        </p>
+        <p>
+            En la pizarra de la Semana 1 establecimos que un <strong>Sistema Distribuido</strong> describe una arquitectura y un conjunto de computadoras autónomas que colaboran como una sola entidad lógica ante el usuario. Su misión primordial es distribuir el procesamiento, el almacenamiento y los recursos de hardware: por ejemplo, repartir las responsabilidades entre un servidor de matrícula, un servidor de biblioteca y un servidor de autenticación para garantizar alta disponibilidad y tolerancia a fallos (Tanenbaum & Van Steen, 2017; Coulouris et al., 2012). Por otro lado, los <strong>Microservicios</strong> corresponden a un <em>estilo arquitectónico</em> de diseño de software en el que una aplicación de gran envergadura se descompone intencionalmente en servicios autónomos y desacoplados (usuarios, catálogo, pagos, inventario) que se comunican mediante APIs (Fowler, 2014). Por último, la <strong>Programación Web</strong> es simplemente el canal tecnológico y de interfaz mediante el cual el usuario interactúa con esos sistemas a través de un navegador y protocolos estándar como HTTP/HTTPS.
+        </p>
+
+        <div class="table-wrapper">
+            <div class="table-caption">Tabla 1. Diferencias esenciales entre Paradigmas de Software según lo analizado en clase</div>
+            <table class="sober-table">
+                <thead>
+                    <tr>
+                        <th style="width: 22%;">Paradigma</th>
+                        <th style="width: 26%;">¿Qué Describe?</th>
+                        <th style="width: 26%;">Objetivo Principal</th>
+                        <th style="width: 26%;">Ejemplo Representativo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Sistemas Distribuidos</strong></td>
+                        <td>Arquitectura e infraestructura física/lógica interconectada.</td>
+                        <td>Distribuir cómputo, almacenamiento y carga entre múltiples máquinas.</td>
+                        <td>Nodos cooperativos de autenticación, matrícula y finanzas universitarias.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Microservicios</strong></td>
+                        <td>Estilo arquitectónico de organización y descomposición del software.</td>
+                        <td>Dividir un monolito en unidades funcionales pequeñas, autónomas y desplegables.</td>
+                        <td>Servicios independientes de consulta de usuarios, productos, pagos e inventario.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Programación Web</strong></td>
+                        <td>Capa de entrega, acceso y desarrollo de interfaces en el navegador.</td>
+                        <td>Crear aplicaciones accesibles universalmente vía web mediante HTTP/HTTPS.</td>
+                        <td>Frontend en HTML/JS consumiendo endpoints REST mediante clientes HTTP.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            Una de las preguntas estratégicas analizadas en la pizarra fue: <em>¿Toda Arquitectura Distribuida es un Sistema Distribuido?</em> La respuesta es no, pues una arquitectura puede quedarse en el plano puramente conceptual o en un diseño estático de software. En cambio, <em>¿todo Sistema Distribuido necesita de una arquitectura?</em> La respuesta es un rotundo sí: ningún sistema distribuido opera de forma azarosa; siempre está sustentado en un modelo que define cómo se comunican sus componentes, cómo se sincronizan sus datos y cómo se gestionan los fallos.
+        </p>
+        <p>
+            Como subrayan Coulouris et al. (2012), la esencia de estos sistemas radica en propiedades transversales como la <strong>transparencia</strong> (ocultar la distribución al cliente), la <strong>escalabilidad horizontal</strong> (añadir más nodos de cómputo en lugar de agrandar artificialmente un solo servidor) y la <strong>concurrencia</strong>. En nuestra práctica de laboratorio inicial montamos las bases de este andamiaje en Node.js, reconociendo el papel del archivo <code>package.json</code> como descriptor de dependencias, <code>package-lock.json</code> como garante de reproducibilidad determinista y <code>node_modules</code> como el almacén local de librerías. Al persistir usuarios en un archivo de texto plano (<code>usuarios.txt</code>) simulamos la frontera de datos, comprendiendo que un servidor Express es apenas el punto de entrada hacia una arquitectura mucho más amplia.
+        </p>
+
+        <!-- ============================================================
+             SECCIÓN 3: EL LENGUAJE DE LA RED Y RPC
+             ============================================================ -->
+        <h2 id="sec3" class="section-title">3. El Lenguaje de la Red: Anatomía de Protocolos y el Salto a RPC</h2>
+
+        <p>
+            <strong>¿Qué es un protocolo y por qué importa?</strong> En las Semanas 2 y 3 profundizamos en la médula espinal de cualquier entorno distribuido: el protocolo de comunicación. Sin un protocolo riguroso, el intercambio de información entre computadoras se convierte en una torre de Babel insostenible. En la pizarra de clase desgranamos los elementos indispensables que componen cualquier protocolo: la <strong>sintaxis</strong> (la estructura y gramática de los paquetes), la <strong>semántica</strong> (el significado e interpretación precisa de cada campo), la <strong>temporización</strong> (el orden, secuenciación y control de velocidad en la transmisión), el <strong>control de errores</strong>, el <strong>control de flujo</strong> y la <strong>seguridad</strong>.
+        </p>
+        <p>
+            <strong>REST vs. RPC: La dicotomía entre Recursos y Acciones:</strong> Durante las últimas dos décadas, la arquitectura REST (Representational State Transfer), formalizada por Roy Fielding (2000), ha reinado en el desarrollo web. REST concibe la red como un universo de <em>recursos</em> identificados por URIs (sustantivos como <code>/usuarios/10</code>) manipulados mediante un conjunto uniforme de verbos HTTP (<code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>). No obstante, en la Semana 3 descubrimos que para muchos escenarios de alto rendimiento, comunicación entre servidores internos o interacción con sistemas descentralizados, el modelo REST resulta excesivamente verboso o conceptualmente forzado. Es allí donde cobra protagonismo histórico y moderno el modelo <strong>RPC (Remote Procedure Call)</strong>.
+        </p>
+
+        <blockquote>
+            "El objetivo fundamental de RPC es lograr que la computación distribuida resulte natural para el programador, haciendo que la invocación de un procedimiento remoto presente exactamente la misma sintaxis y abstracción que una llamada a una función local dentro del mismo proceso."
+            <span class="quote-author">— Andrew Birrell & Bruce Nelson (1984, inventores de RPC)</span>
+        </blockquote>
+
+        <p>
+            En el <strong>Laboratorio 1 (s1SDRPC-lab1)</strong> vivimos esta transición en carne propia al interactuar directamente con dos de las redes descentralizadas más representativas del ecosistema blockchain: <strong>Ethereum</strong> y <strong>Solana</strong>. En lugar de consultar recursos REST tradicionales, construimos peticiones conformes al estándar internacional <strong>JSON-RPC 2.0</strong>, transportadas mediante solicitudes HTTP <code>POST</code> hacia los nodos públicos <code>https://ethereum-rpc.publicnode.com</code> y <code>https://api.devnet.solana.com</code>.
+        </p>
+
+        <div class="table-wrapper">
+            <div class="table-caption">Tabla 2. Matriz comparativa entre la Arquitectura REST y el Modelo RPC</div>
+            <table class="sober-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Criterio Técnico</th>
+                        <th style="width: 37%;">Arquitectura REST</th>
+                        <th style="width: 38%;">Modelo RPC (JSON-RPC / gRPC)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Filosofía Central</strong></td>
+                        <td>Orientada a <em>Recursos</em> (Entidades, Sustantivos).</td>
+                        <td>Orientada a <em>Procedimientos / Acciones</em> (Verbos, Métodos).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Identificador de Operación</strong></td>
+                        <td>URI jerárquica y semántica (ej. <code>/api/usuarios/45</code>).</td>
+                        <td>Nombre explícito del método en el payload (ej. <code>eth_blockNumber</code>).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Uso de Verbos HTTP</strong></td>
+                        <td>Polimorfismo uniforme: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>.</td>
+                        <td>Túnel casi exclusivo mediante HTTP <code>POST</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Paso de Parámetros</strong></td>
+                        <td>Segmentado en Headers, Path variables, Query y Request Body.</td>
+                        <td>Estructurado unificadamente dentro de la clave <code>params: []</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Formato de Respuesta</strong></td>
+                        <td>JSON genérico respaldado por códigos de estado HTTP (200, 404).</td>
+                        <td>Sobre estandarizado: <code>{ jsonrpc: "2.0", result, error, id }</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            El código desarrollado en <code>services/rpcService.js</code> evidenció una lección trascendental de los sistemas distribuidos: el <strong>envoltorio de errores (error wrapping)</strong>. Descubrimos que un nodo RPC puede responder con un código de transporte exitoso <code>HTTP 200 OK</code> pero incluir en su interior un error de protocolo o de datos severo, como un método no reconocido o una firma inválida (código <code>-32601</code>). Esto nos enseñó que la <em>disponibilidad del canal de comunicación</em> y la <em>validez lógica de los datos</em> pertenecen a planos analíticos totalmente diferentes: verificar que el servidor respondió no equivale a verificar que la operación distribuida tuvo éxito.
+        </p>
+
+        <!-- ============================================================
+             SECCIÓN 4: INGESTA DE DATOS Y GRAPHQL
+             ============================================================ -->
+        <h2 id="sec4" class="section-title">4. El Dilema de la Ingesta de Datos: De REST y Over-fetching a la Precisión de GraphQL</h2>
+
+        <p>
+            <strong>La economía del ancho de banda y las llamadas de red:</strong> En la Semana 4 abordamos un dilema que todo arquitecto de software distribuido enfrenta tarde o temprano: la tensión permanente entre el <em>oferente</em> (el servicio que expone los datos) y el <em>consumidor</em> (las aplicaciones que los ingestan). Desde la trinchera del consumidor, la meta es reducir al mínimo la cantidad de viajes de ida y vuelta (round-trips) a la red y el volumen de datos descargados sin degradar la experiencia visual. Desde la trinchera del oferente, la prioridad es atender millones de peticiones concurrentes sin que los servidores colapsen procesando y serializando datos que nadie necesita.
+        </p>
+        <p>
+            En los servicios REST tradicionales, esta fricción da lugar a dos patologías bien documentadas (Kleppmann, 2017):
+        </p>
+        <p>
+            1. <strong>Over-fetching (sobre-descarga):</strong> El endpoint devuelve un objeto monstruoso con cincuenta atributos cuando la interfaz del cliente únicamente necesita mostrar el nombre y el precio de un producto. El ancho de banda y la memoria del cliente se desperdician en serializar y transmitir información irrelevante.
+        </p>
+        <p>
+            2. <strong>Under-fetching (sub-descarga y problema N+1):</strong> Un solo endpoint no aporta los datos suficientes para componer la pantalla, forzando al cliente a encadenar múltiples peticiones consecutivas (por ejemplo, consultar el usuario, luego sus pedidos y luego el detalle de cada pedido), multiplicando la latencia y la congestión de red.
+        </p>
+
+        <p>
+            <strong>Experimentación práctica con GraphQL en Express:</strong> En el <strong>Laboratorio 2 (s4SD-lab2)</strong> experimentamos la respuesta de la industria a este dilema: <strong>GraphQL</strong>. Conectamos nuestro servidor Express con dos APIs públicas de GraphQL: la API de países de Trevor Blades (<code>https://countries.trevorblades.com/</code>) y la API de personajes de Rick and Morty (<code>https://rickandmortyapi.com/graphql</code>).
+        </p>
+        <p>
+            En lugar de recibir payloads exhaustivos, escribimos consultas declarativas donde solicitamos únicamente los campos requeridos por nuestra vista:
+        </p>
+
+        <pre><code>query {
+    countries {
+        code
+        name
+        emoji
+        capital
+        currency
+    }
+}</code></pre>
+
+        <p>
+            Comprobamos que GraphQL traslada el poder de decisión al cliente sin desordenar el backend. Al igual que RPC, GraphQL concentra sus operaciones sobre un único endpoint mediante peticiones HTTP <code>POST</code>, pero añade un sistema de tipos estricto y un motor de resolución que extrae exclusivamente los campos demandados.
+        </p>
+        <p>
+            Asimismo, en la pizarra teórica de la Semana 4 comparamos dos mecanismos de sincronización de eventos en sistemas distribuidos: los <strong>Cron Jobs</strong> (tareas programadas activadas periódicamente por tiempo en el servidor mediante herramientas como <code>node-cron</code>) y las <strong>GraphQL Subscriptions</strong> (canales reactivos bidireccionales basados en <strong>WebSockets</strong> donde el servidor empuja eventos al cliente en tiempo real tan pronto ocurre una mutación). Esta distinción nos permitió comprender que no todo en un sistema distribuido debe resolverse mediante consultas periódicas (polling); cuando la inmediatez importa, los patrones orientados a eventos push son notablemente superiores.
+        </p>
+
+        <!-- ============================================================
+             SECCIÓN 5: RESILIENCIA Y LA FALACIA DEL SIMPLE TRY-CATCH
+             ============================================================ -->
+        <h2 id="sec5" class="section-title">5. La Cruda Realidad del Entorno Distribuido: Resiliencia y la Falacia del "Simple Try-Catch"</h2>
+
+        <p>
+            <strong>El mito del try-catch universal:</strong> Si tuviéramos que elegir el punto de inflexión en el que el curso nos obligó a pensar como ingenieros de sistemas y no como meros redactores de código, ese momento ocurrió en la Semana 5 con el <strong>Laboratorio 3 (s5SD-lab3)</strong>. En esta práctica desarrollamos un agregador financiero que consumía datos en tiempo real de criptomonedas (CoinGecko) y tipos de cambio de divisas internacionales (Frankfurter), orquestando las respuestas y persistiendo un historial de consultas en disco.
+        </p>
+        <p>
+            En ese laboratorio se formuló una interrogante de diseño vital: <em>¿El manejo de errores <code>try-catch</code> del módulo de servicios es igual al del módulo de rutas?</em> La respuesta rotunda, demostrada en el código y documentada en nuestras notas de arquitectura, es <strong>NO</strong>.
+        </p>
+
+        <div class="table-wrapper">
+            <div class="table-caption">Tabla 3. Responsabilidades y tratamiento de excepciones según la capa arquitectónica</div>
+            <table class="sober-table">
+                <thead>
+                    <tr>
+                        <th style="width: 24%;">Criterio de Evaluación</th>
+                        <th style="width: 38%;">Capa de Servicios (<code>services/</code>)</th>
+                        <th style="width: 38%;">Capa de Rutas / Controladores (<code>routes/</code>)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nivel y Rol Arquitectónico</strong></td>
+                        <td>Capa de Negocio e Integración Externa con servicios de terceros.</td>
+                        <td>Frontera HTTP, orquestación de endpoints y presentación al cliente.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comportamiento ante <code>fetch()</code></strong></td>
+                        <td>Respuestas HTTP 404, 429 (Rate Limit) o 500 <strong>no entran al <code>catch</code></strong>. Requiere validar manualmente <code>if (!respuesta.ok)</code>.</td>
+                        <td>Envuelve la ejecución de los servicios para evitar que excepciones no controladas colapsen el proceso de Express.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Objetivo del Diagnóstico</strong></td>
+                        <td><strong>Forense y distribuido:</strong> registrar URL, status code, latencia y respuesta cruda textual del proveedor externo.</td>
+                        <td><strong>Estructural y de usuario:</strong> emitir un código de estado adecuado (500, 400) y un JSON limpio sin filtrar detalles sensibles.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acción ante la Falla</strong></td>
+                        <td>Imprime trazabilidad exhaustiva en consola y ejecuta <code>throw error</code> (re-throw) para propagar el evento hacia el orquestador.</td>
+                        <td>Captura la excepción final y ejecuta <code>res.status(500).json({ error: "Mensaje amigable" })</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <blockquote>
+            "Todo falla, todo el tiempo. La resiliencia no consiste en pretender que los componentes nunca colapsen, sino en diseñar el sistema para que siga operando con dignidad cuando los componentes fallen."
+            <span class="quote-author">— Werner Vogels (CTO de Amazon, 2006)</span>
+        </blockquote>
+
+        <p>
+            En la práctica, comprobamos que cuando la API de CoinGecko nos arrojaba un error <code>HTTP 429 Too Many Requests</code> debido a límites de cuota gratuita, la función nativa <code>fetch()</code> de Node.js resolvía la promesa sin lanzar ninguna excepción porque la conexión TCP se había completado con éxito. Si el desarrollador se confía en un <code>try-catch</code> ingenuo, la aplicación intenta parsear un JSON inexistente y se desploma silenciosamente. Fue necesario inspeccionar explícitamente <code>!respuesta.ok</code>, extraer el cuerpo con <code>await respuesta.text()</code>, imprimir un log delimitado de monitoreo forense y relanzar el error intencionalmente con <code>throw new Error(...)</code> para que el orquestador supiera con precisión qué eslabón de la cadena se había roto.
+        </p>
+        <p>
+            <strong>Resiliencia mediante <code>Promise.allSettled</code>:</strong> El segundo gran aprendizaje de este laboratorio fue el abandono consciente de <code>Promise.all</code> en favor de <code>Promise.allSettled</code>. En un sistema distribuido que consulta múltiples microservicios independientes, usar <code>Promise.all</code> es una receta para el desastre: basta con que uno solo de los servicios falle o se demore para que toda la promesa sea rechazada y el usuario se quede con las manos vacías (degradación catastrófica).
+        </p>
+        <p>
+            Con <code>Promise.allSettled</code>, en cambio, cada llamada remota resuelve de forma aislada. Si el servicio de Bitcoin fallaba por saturación pero el servicio de tipo de cambio del euro en Frankfurter respondía con éxito, nuestra API pudo retornar los datos del euro y notificar educadamente el error individual de la criptomoneda:
+        </p>
+
+        <pre><code>bitcoin: resultados[0].status === "fulfilled"
+    ? resultados[0].value
+    : { error: resultados[0].reason.message }</code></pre>
+
+        <p>
+            Esta técnica encarna la filosofía de <em>degradación elegante (graceful degradation)</em> que distingue a las plataformas distribuidas de escala mundial (Vogels, 2009). Finalmente, la persistencia en el archivo <code>data/historial.txt</code> nos permitió simular el dominio de datos y el registro de auditoría sin añadir prematuramente la complejidad de un motor de bases de datos relacional.
+        </p>
+
+        <!-- ============================================================
+             SECCIÓN 6: MODULARIDAD RADICAL Y MICROFRONTENDS
+             ============================================================ -->
+        <h2 id="sec6" class="section-title">6. Modularidad Radical: Contenedores, Principios de Diseño y Microfrontends con Shadow DOM</h2>
+
+        <p>
+            <strong>Los Diez Principios Inviolables de los Sistemas Distribuidos:</strong> En la Semana 6, las pizarras compilaron un decálogo indispensable que todo arquitecto de software moderno debe interiorizar:
+        </p>
+        <p>
+            1. <em>Diseño para fallos:</em> Asumir que los nodos, cables y servicios fallarán inevitablemente.<br>
+            2. <em>Evitar dependencias síncronas innecesarias:</em> El bloqueo en cascada es el enemigo número uno de la escalabilidad.<br>
+            3. <em>Definir límites claros de servicios:</em> Fronteras de dominio bien delineadas.<br>
+            4. <em>Cada servicio debe ser dueño de sus datos:</em> Prohibido compartir bases de datos monolíticas entre microservicios autónomos.<br>
+            5. <em>Hacer operaciones idempotentes:</em> Permitir reintentos seguros en la red sin duplicar transacciones.<br>
+            6. <em>Usar timeouts explícitos:</em> Jamás esperar una respuesta remota de manera indefinida.<br>
+            7. <em>Observabilidad desde el principio:</em> Logs estructurados, métricas y trazabilidad distribuida.<br>
+            8. <em>Controlar la consistencia:</em> Reconocer los límites del Teorema CAP (Brewer, 2012) y abrazar la consistencia eventual.<br>
+            9. <em>Servicios con despliegue independiente:</em> Cada componente debe poder ir a producción sin sincronizarse con otros equipos.<br>
+            10. <em>Eliminar estado innecesario:</em> Favorecer la arquitectura <em>stateless</em> para facilitar el balanceo y la replicación.
+        </p>
+        <p>
+            Asimismo, aclaramos la relación conceptual entre <strong>Microservicios</strong> y <strong>Contenedores</strong>. Los microservicios son una abstracción lógica de separación de responsabilidades funcionales. Los contenedores (Docker), en cambio, son la tecnología de virtualización a nivel de sistema operativo que empaqueta el código de ese microservicio junto con sus binarios, dependencias y variables de entorno, permitiendo que corra de manera idéntica en una laptop de desarrollo o en un clúster de Kubernetes en la nube.
+        </p>
+        <p>
+            <strong>Microfrontends en la práctica con NASA GIBS y NASA POWER:</strong> Pero la gran revelación de la Semana 6 y del <strong>Laboratorio 4 (s6SD-lab4)</strong> fue extender estos principios hasta la capa visual del navegador mediante los <strong>Microfrontends</strong> (Geers, 2020; Jackson, 2019).
+        </p>
+        <p>
+            Tradicionalmente, las organizaciones descomponían su backend en microservicios pero mantenían sus interfaces de usuario como monolitos gigantescos. Si un equipo cambiaba un botón en el carrito de compras, debía volver a compilar y probar todo el frontend de la empresa. En nuestro laboratorio rompimos este cuello de botella creando dos componentes visuales autónomos que consumían servicios reales de la NASA:
+        </p>
+        <p>
+            - El componente <code>solar-card.js</code>, que consultaba datos de radiación solar en tiempo real desde la API NASA POWER.<br>
+            - El componente <code>satellite-card.js</code>, que consumía imágenes satelitales MODIS de color verdadero sobre las coordenadas geográficas de Costa Rica directamente desde el servicio de mapas WMS de NASA GIBS (utilizando el backend de Express como proxy seguro de imágenes).
+        </p>
+        <p>
+            <strong>El rol del Shadow DOM como frontera de aislamiento:</strong> Lo verdaderamente revolucionario fue que no utilizamos frameworks externos para implementar esta arquitectura: recurrimos a los estándares web nativos de <strong>Web Components</strong> (<code>customElements.define</code>) y <strong>Shadow DOM</strong> (<code>this.attachShadow({ mode: "open" })</code>). El Shadow DOM actúa en el navegador exactamente como un contenedor en el backend: crea una barrera de encapsulamiento absoluta donde los estilos CSS externos no pueden contaminar al componente, y las reglas CSS internas del componente jamás se filtran hacia el resto de la página. Esto demostró que la modularidad, la independencia de despliegue y el bajo acoplamiento son principios universales que abarcan desde el servidor más profundo hasta el último píxel renderizado en el cliente.
+        </p>
+
+        <!-- ============================================================
+             SECCIÓN 7: SERVERLESS Y EDGE COMPUTING
+             ============================================================ -->
+        <h2 id="sec7" class="section-title">7. La Frontera del Cómputo: Paradigma Serverless, FaaS y Edge Computing</h2>
+
+        <p>
+            <strong>De servidores permanentes a cómputo efímero en el borde:</strong> Nuestro recorrido formativo alcanzó su clímax en el <strong>Laboratorio 5 (s7SD-lab5)</strong> al explorar la vanguardia del cómputo distribuido contemporáneo: las arquitecturas sin servidor (<em>Serverless</em>) y las <em>Funciones como Servicio (FaaS)</em>.
+        </p>
+        <p>
+            Durante décadas, la infraestructura en la nube operó bajo el esquema de aprovisionamiento de capacidad: uno contrataba una máquina virtual o un contenedor en AWS o Azure, pagando por cada hora encendida independientemente de si procesaba un millón de peticiones o ninguna. El modelo Serverless propuesto en la última década (Castro et al., 2019) rompe radicalmente con este modelo: no existen servidores que administrar, no hay instancias en espera consumiendo dinero y el desarrollador únicamente despliega funciones puras y autónomas que la nube despierta en milisegundos ante la llegada de un evento.
+        </p>
+        <p>
+            En nuestra práctica trabajamos con <strong>Cloudflare Workers</strong>, una plataforma que prescinde de máquinas virtuales y de contenedores Docker tradicionales para ejecutar código sobre <em>V8 Isolates</em> dispersos en cientos de centros de datos alrededor del mundo (Edge Computing). Al correr en el "borde" geográfico de la red, la función procesa las peticiones en el punto más cercano físicamente al usuario, abatiendo las latencias de tránsito continental.
+        </p>
+        <p>
+            <strong>Arquitectura dirigida por eventos y disparadores programados:</strong> En el laboratorio vinculamos una interfaz gráfica interactiva con un worker real desplegado en la nube (<code>https://cloud-worker.fullengineer90253.workers.dev</code>), comprobando los tres modos de activación que definen a las arquitecturas modernas dirigidas por eventos:
+        </p>
+        <p>
+            1. <strong>Eventos HTTP bajo demanda:</strong> Una acción en la interfaz dispara una petición que activa la función FaaS en el cloud, ejecutando la lógica de negocio y devolviendo el resultado de forma puramente stateless.<br>
+            2. <strong>Funciones con responsabilidad atómica:</strong> Cada endpoint del worker atiende una sola responsabilidad funcional (Single Responsibility Principle), permitiendo que la aplicación escale de cero a millones de ejecuciones concurrentes sin intervención manual.<br>
+            3. <strong>Disparadores temporales (Cron Triggers / Schedulers):</strong> La infraestructura de Cloudflare permite planificar la ejecución desatendida de la función <code>scheduled()</code> según cronogramas de tiempo específicos (sintaxis cron), habilitando tareas de sincronización periódica, recolección de métricas o mantenimiento de datos sin requerir ningún servidor encendido de manera permanente.
+        </p>
+
+        <!-- ============================================================
+             SECCIÓN 8: SÍNTESIS Y CONCLUSIONES
+             ============================================================ -->
+        <h2 id="sec8" class="section-title">8. Síntesis y Conclusiones: Lecciones Aprendidas al Pie de la Máquina</h2>
+
+        <p>
+            <strong>Un cambio irreversible en el criterio de ingeniería:</strong> Al revisar en retrospectiva las pizarras virtuales del profesor Luis Raúl y cada línea de código escrita en los cinco laboratorios, se hace evidente que este curso no ha consistido en acumular sintaxis o aprender librerías de moda. Ha sido, en su sentido más pleno, una transformación en la estructura mental con la que concebimos el software.
+        </p>
+        <p>
+            Hemos dejado atrás la visión ingenua de la máquina aislada para abrazar la mentalidad del arquitecto de sistemas distribuidos, guiada por cinco lecciones capitales aprendidas en la práctica:
+        </p>
+        <p>
+            <strong>1. La red es hostil, falible y asíncrona:</strong> Las famosas falacias de la computación distribuida no son advertencias teóricas; son realidades que vimos manifestarse en cada petición fallida de CoinGecko o en cada nodo RPC inactivo. Diseñar para el fallo es la única postura profesional admisible.
+        </p>
+        <p>
+            <strong>2. El protocolo dicta la eficiencia y el acoplamiento:</strong> No existe una bala de plata. REST es magnífico para recursos universales y CRUD web; RPC es insuperable para ejecución de métodos remotos directos y baja latencia en microservicios internos; y GraphQL es la solución idónea para ingestas complejas donde el cliente necesita gobernar la carga de red y erradicar el sobreconsumo de datos.
+        </p>
+        <p>
+            <strong>3. La resiliencia exige rigor arquitectónico en capas:</strong> Un simple bloque <code>try-catch</code> no salva a una aplicación distribuida. La verificación de protocolos exige inspección exhaustiva de cabeceras, registro forense de anomalías y orquestación resiliente con patrones como <code>Promise.allSettled</code>.
+        </p>
+        <p>
+            <strong>4. La distribución es un principio holístico:</strong> La separación de responsabilidades y el bajo acoplamiento no se detienen en la base de datos ni en el servidor de aplicaciones; se manifiestan con igual potencia en la interfaz mediante microfrontends y Web Components blindados por Shadow DOM.
+        </p>
+        <p>
+            <strong>5. La computación moderna converge hacia el borde y los eventos:</strong> La evolución desde servidores monolíticos hacia microservicios en contenedores, y de ahí hacia funciones efímeras FaaS en Cloudflare Workers, demuestra que el futuro de la ingeniería distribuida pertenece a las arquitecturas elásticas, orientadas a eventos y desplegadas a milímetros del usuario final.
+        </p>
+        <p>
+            En conclusión, las bases aprendidas en este curso nos dejan una certidumbre imborrable: en el apasionante universo de los sistemas distribuidos, la excelencia de un ingeniero de software no radica en soñar con entornos libres de errores, sino en poseer la lucidez, la disciplina y el rigor técnico para construir arquitecturas que continúen operando de manera digna, predecible y elegante en un mundo inevitablemente imperfecto.
+        </p>
+
+        <!-- ============================================================
+             SECCIÓN 9: REFERENCIAS BIBLIOGRÁFICAS (APA 7)
+             ============================================================ -->
+        <div id="sec9" class="references-section">
+            <h2 class="section-title">9. Referencias Bibliográficas (Normativa APA 7ma Edición)</h2>
+
+            <div class="apa-reference">
+                Birrell, A. D., & Nelson, B. J. (1984). Implementing remote procedure calls. <em>ACM Transactions on Computer Systems (TOCS)</em>, 2(1), 39–59. <a href="https://doi.org/10.1145/2080.357392" target="_blank">https://doi.org/10.1145/2080.357392</a>
+            </div>
+
+            <div class="apa-reference">
+                Brewer, E. A. (2012). CAP twelve years later: How the "rules" have changed. <em>Computer</em>, 45(2), 23–29. <a href="https://doi.org/10.1109/MC.2012.37" target="_blank">https://doi.org/10.1109/MC.2012.37</a>
+            </div>
+
+            <div class="apa-reference">
+                Castro, P., Ishakian, V., Muthusamy, V., & Slominski, A. (2019). The rise of serverless computing. <em>Communications of the ACM</em>, 62(12), 44–54. <a href="https://doi.org/10.1145/3368454" target="_blank">https://doi.org/10.1145/3368454</a>
+            </div>
+
+            <div class="apa-reference">
+                Coulouris, G., Dollimore, J., Kindberg, T., & Blair, G. (2012). <em>Distributed systems: concepts and design</em> (5th ed.). Addison-Wesley.
+            </div>
+
+            <div class="apa-reference">
+                Fielding, R. T. (2000). <em>Architectural styles and the design of network-based software architectures</em> (Doctoral dissertation, University of California, Irvine). Information and Computer Science.
+            </div>
+
+            <div class="apa-reference">
+                Fowler, M. (2014). <em>Microservices: a definition of this new architectural term</em>. MartinFowler.com. <a href="https://martinfowler.com/articles/microservices.html" target="_blank">https://martinfowler.com/articles/microservices.html</a>
+            </div>
+
+            <div class="apa-reference">
+                Geers, M. (2020). <em>Micro frontends in action</em>. Manning Publications.
+            </div>
+
+            <div class="apa-reference">
+                Jackson, C. (2019). <em>Micro frontends: Extending the microservice idea to frontend development</em>. MartinFowler.com. <a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank">https://martinfowler.com/articles/micro-frontends.html</a>
+            </div>
+
+            <div class="apa-reference">
+                Kleppmann, M. (2017). <em>Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems</em>. O'Reilly Media.
+            </div>
+
+            <div class="apa-reference">
+                Lamport, L. (1978). Time, clocks, and the ordering of events in a distributed system. <em>Communications of the ACM</em>, 21(7), 558–565. <a href="https://doi.org/10.1145/359545.359563" target="_blank">https://doi.org/10.1145/359545.359563</a>
+            </div>
+
+            <div class="apa-reference">
+                Tanenbaum, A. S., & Van Steen, M. (2017). <em>Distributed systems: principles and paradigms</em> (3rd ed.). CreateSpace Independent Publishing Platform.
+            </div>
+
+            <div class="apa-reference">
+                Vogels, W. (2009). Eventually consistent. <em>Communications of the ACM</em>, 52(1), 40–44. <a href="https://doi.org/10.1145/1435417.1435432" target="_blank">https://doi.org/10.1145/1435417.1435432</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

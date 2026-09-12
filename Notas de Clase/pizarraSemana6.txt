@@ -1,0 +1,171 @@
+1.Si hay preguntas, y aclaraciones, de otra forma continuamos.
+2.Verificación del aula virtual.
+**************************************
+1.Principios enfocados a Sistemas Distribuidos:
+	1-Diseño para fallos - no es igual a "Prueba de fallos"
+	2-Evitar dependencias síncronas innecesarias
+	3-Definir límites claros de servicios 
+	4-Cada servicio debe de ser dueño de sus datos.
+		-modelo y almacenamiento
+	5-Hacer operaciones idemponentes
+	6-Usar "timeouts" explícitos
+		-por solicitud de espera de la respuesta de llamado
+	7-Observabilidad desde el principio
+	8-Controlar la consistencia
+		-ACID
+		-"Constencia Evental"
+	9-Hacer que los servicios sean "deploy"/"desplegables independientes"
+	10-Automatizar y/o eliminar "estado innecesario"
+		-"stateless" ---- pregunta de quiz
+			- como razonable sea su implementación
+			
+2.Contenedores
+	-definición: contenedor
+	-tomando en consideración un ejemplo, como: sistema e-commerce
+		-usuario
+		-catálogo
+		-pedidos
+		-pagos
+	-sistema e-commerce
+		-contenedor: usuario
+			-aplicación
+			-dependencias
+		-contenedor: catálogo
+			-aplicación
+			-dependencias
+		-contenedor: pedidos
+			-aplicación
+			-dependencias		
+		-contenedor: pagos
+			-aplicación
+			-dependencias		
+	-Docker
+		-contenedor + docker + kubernetes
+	-¿qué aporta un contenedor?
+		-tomen nota de la explicación que da profesor
+		-retomando el ejemplo anterior:
+			-aplicación + dependencias + configuración necesaria -: CONTENEDOR -: laptop / servidor / nube 
+	-retomando el ejemplo anterior:
+		-kubernetes
+			-contenedor: usuario
+					-aplicación
+					-dependencias
+				-replicas
+			-contenedor: catálogo
+					-aplicación
+					-dependencias
+				-replicas
+			-contenedor: pedidos
+					-aplicación
+					-dependencias
+				-replicas
+			-contenedor: pagos
+					-aplicación
+					-dependencias
+				-replicas
+	-microservicios NO ES LO MISMO que contenedores
+
+------------------------
+
+3.Microfrontend - esto es un ejemplo conceptual para entender el microfrontend: "card"
+	-tomar nota de la explicación
+	-ejemplo es:
+		-frontend
+			-catálogo
+				-Microfronend
+					-servicio de catálogo					
+			-carrito
+				-Microfronend			
+					-servicio de carrito
+			-cuenta
+				-Microfronend			
+					-servicio de cuenta
+	¿qué busca el microfrontend?
+	R/independencia
+	
+	
+	
+4.¿por qué se relaciona con sistemas distribuidos?
+R/tomar nota de la explicación del profe.
+			
+5.¿es el Microfrontend no es igual a "componentes"?
+R/no, porque podemos tener
+	-React / Vue / Angular
+		-componente "ProductCard"
+	-componente: 
+		-pieza de UI
+		-reutilizable
+			-se define una sola vez la "pieza de ui" y se reusa las veces sean necesarias
+		-encapsula
+	-todo forma parte de un mismo "frontend", pero pueden existir cambios:
+		-en el build
+		-en el deployment
+		-en el versionamiento
+		
+			
+6.¿cómo implementar Microfrontend - estrategias?
+R/tomen nota:
+	-Build-Time composition
+	-Runtime composition
+	-Server-Side composition
+	-Web Components
+	-Module Federation
+7.¿cuáles las posibles ventajas y desventajas?
+R/tomen nota de la explicación
+
+8.¿buena regla general sobre el microfrontends?
+R/tomen nota.
+
+
+-----------------------------------------------------
+Práctica de microfrontends + componentes
+
+1.explicación del ejercio 
+	-navegador
+		-HTTP
+			-node.js + express
+				-vamos a trabajar con datos reales de la NASA POWER
+					-datos solares derivados de las observaciones de los satélites
+	
+				-vamos a trabajar con NASA GIBS
+					-imágenes satelitales MODIS
+					-WMS
+						-modis_terra_...._trueColor
+	-frontend	
+		-index.html
+			-solar-card :- microfrontend/componente 1
+			-satelital-card :- microfrontend/componente 1
+
+2.crear el folder de la app, por ejemplo, "S6-SW"
+3.entren al folder la app, y en la terminal, y ejecuten:			
+	-npm init -y 
+4.en el archivo "package.json" :- reemplazar por código envidado por teams
+5.entren al folder la app, y en la terminal, y ejecuten:			
+	-npm install
+6.crear el archivo "server.js" :- ingresar por código envidado por teams
+	-get /api/solar
+	-get /api/satellite-image
+7.crear el archivo "public/index.html" :- ingresar por código envidado por teams
+	-recordar que "href="/css/styles.css" es de la página HTML, y no aplica para los componentes o módulos, estos últimos tiene "independencia"
+8.crear "public/components/solar-card.js"  :- ingresar por código envidado por teams
+	-attachShadow -DOM
+9.crear "public/components/satellite-card.js"  :- ingresar por código envidado por teams
+	-attachShadow -DOM
+	
+----------quedamos por terminar de explicar solar-card... para luego continuar con satellite-card-----------
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

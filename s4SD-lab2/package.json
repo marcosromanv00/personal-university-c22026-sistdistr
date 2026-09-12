@@ -1,0 +1,13 @@
+{
+  "name": "s4sd-lab2",
+  "version": "1.0.0",
+  "description": "Aplicación Node.js Express que consume dos APIs GraphQL",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

@@ -1,0 +1,105 @@
+<!doctype html>
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Servicios Financieros</title>
+
+    <link rel="stylesheet" href="/css/estilos.css" />
+  </head>
+
+  <body>
+    <div class="contenedor">
+      <h1>UNA - 2026 - Información Financiera -</h1>
+
+      <p class="descripcion">
+        Marcos Román Valverde
+      </p>
+
+      <button id="btnConsultar">Consultar servicios</button>
+
+      <div id="mensaje"></div>
+
+      <div class="tarjetas">
+        <!-- BITCOIN -->
+
+        <div class="tarjeta">
+          <h2>Bitcoin</h2>
+
+          <p>
+            Servicio:
+
+            <strong id="btcServicio"> - </strong>
+          </p>
+
+          <p>
+            Código:
+
+            <strong id="btcCodigo"> - </strong>
+          </p>
+
+          <p>
+            Precio USD:
+
+            <strong id="btcPrecio"> - </strong>
+          </p>
+        </div>
+
+        <!-- ETHEREUM -->
+
+        <div class="tarjeta">
+          <h2>Ethereum</h2>
+
+          <p>
+            Servicio:
+
+            <strong id="ethServicio"> - </strong>
+          </p>
+
+          <p>
+            Código:
+
+            <strong id="ethCodigo"> - </strong>
+          </p>
+
+          <p>
+            Precio USD:
+
+            <strong id="ethPrecio"> - </strong>
+          </p>
+        </div>
+
+        <!-- TIPO DE CAMBIO -->
+
+        <div class="tarjeta">
+          <h2>USD → EUR</h2>
+
+          <p>
+            Servicio:
+
+            <strong id="tcServicio"> - </strong>
+          </p>
+
+          <p>
+            Tipo de cambio:
+
+            <strong id="tcValor"> - </strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button id="btnGuardar" class="guardar">
+          Guardar información en TXT
+        </button>
+      </div>
+
+      <p id="fecha">Fecha de consulta: -</p>
+    </div>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>

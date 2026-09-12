@@ -1,0 +1,267 @@
+1-Correo de contacto: 
+	una.luisraul@gmail.com
+2-El programa de curso se montará actualizado esta semana para que lo revisen
+3-Fuentes de materia
+	-Material expuesto
+	-Explicación en clase y pizarra
+	-Material de lectura
+4-Retomo la metodología en la siguiente clase, y la verificamos:
+	-Proyectos
+	-Evaluaciones cortas
+	-Tareas y labs
+-------------------------------
+1-Diferencias entre
+	-Sistemas Distribuidos
+		-Describe: Arquitectura de sistemas
+		-¿Qué es?:
+			-Conjunto de computadoreas trabajando juntas como un solo sistema.
+		-Objetivo:
+			-Distribuir:
+				-Procesamiento
+				-Almacenamiento
+			|	-Recurso de equipos
+		-Ejemplos:
+			-Servidor A - de matrícula
+			-Servidor B - de Biblioteca
+			-Servidor C - Autenticación
+
+	-Microservicios
+		-Describe: "Estilo" de la arquitectura escogida y el tipo de software
+		-¿Qué es?:
+			-Una aplicación se divide en pequeños "servicios" independientes.
+		-Objetivo:
+			-Dividir una aplicación grande:
+				-en partes pequeñas y autónomas
+		-Ejemplos:
+			-Servicio de consulta de usuarios
+			-Servicio de consulta de productos
+			-Servicio de consulta de pagos
+			-Servicio de consulta de inventario
+				-Comunicación: por medio de APIs
+					-Ejemplo:
+						-Cliente
+							-API GateWay
+								-Usuarios
+								-Productos
+								-Pagos
+								-Inventario
+
+	-Programación Web
+		-Describe: Desarrollo de aplicaciones, accesibibles mediente un navegador
+		-¿Qué es?:
+			-Desarrollo aplicaciones que funcionan mediente tecnología web.
+		-Objetivo:
+			-Crear aplicaciones:
+				-accesibles desde una navegador o internet.
+		-Ejemplos:
+			-Navetador
+				-HTTP/HTTPS
+					-Servidor Web
+						-Aplicación
+							-Base de Datos
+
+	OBSERVACIÓN:
+		Desde luego están interconectados.
+
+2-Se explica: Arquitectura Distribuida vs Sistemas Distribuidos
+	-Arquitectura D.
+		-Diseño o modelo
+		-Nivel: conceptual
+	-Sistema Distribuido
+		-Implementación
+		-Nivel: operativo
+
+2.1-Canalizada con el curso, ejemplos de puntos a tomar:
+	-Arquitectura D. - objetivo
+		-comunicación de componentes
+		-cómo se ejecuta cada servicio
+		-distribuye la información
+		-maneja la seguridad
+		-cómo escalar la arquitectura
+		-cómo tolerar fallos
+			
+	-Sistema D.
+		-la ejecuciòn de las tareas en varias computadoras
+		-la "sharing" - compartición de recursos
+		-"availability" - disponibilidada
+			-soporte a miles o millones de usuarios
+		-rendimiento
+		-Funcionamiento:
+			-Se espera que "Todos funcionan simultáneamente."
+				-A veces existen ciertas condiciones que hacen que no sean simultáneos:
+				-pueden existir "conflictos", "dependencias", "bloqueos", entre otros.
+					-amerita un tipo de administración del funcionamiento de proceso para superarlos.
+
+3-¿Toda Arquitectura D. es un Sistema D.?
+R/No, porque puede quedarse solo como un diseño.
+
+4-¿Todo sistema distribuido necesita de una arquitectura?
+R/Sí, porquer todo Sistema D. se basa en alguna arquitectura, aunque sea sencilla.
+
+5-Resumen de características de un Sistema D.
+	-Transparencia
+	-Escalabilidad
+	-Tolerancia de Fallos
+	-Concurrencia
+	-Compartir recursos
+	-Comunicación
+
+6-Relacion de Node.js con:  Arqui. D. y Sist. D.
+	-Ejemplo:
+		-Cliente
+			-API GateWay
+				-Usuarios (Node.js)
+				-Productos (Python)
+				-Pagos (Java)
+				
+				||
+				||
+				||			
+                                V
+			Base de datos.
+
+********************************************************************************
+1-Práctica, entorno y add-in para:
+	-Enviroment "setting"
+	-iniciar con los tools
+	-instalar el NODE.JS
+	-Add-ins.
+
+2-Node.js, es un entorno de ejecuciòn de javaScript
+3-npm (node package manager), gestor de paquetes de node.js
+4-npx - herramienta de paquetes sin instal. gloales
+5-Cuando instalen el node.js
+	-dejar defecto
+6-Asegurarse que tengan "marcado" en la opciòn del instalador
+	-node.js runtime
+	-corepack
+	-npm package
+	-path - enviroment variables.
+7-No marcar la opción que describe algo "Chocolatey"
+8-Crear una carpeta de trabajo con un nombre de su escogencia corto, por ejemplo, "S1-SW"
+9-verificando versiones, van a terminal del folder de la aplicaciòn y verifican las versiones:
+	-node -v
+	-npm -v
+10-van a terminal del folder de la aplicaciòn:
+	-npm init
+	-preguntas:
+		-package name: server1
+		-version: 1.0.0
+		-description: programa de inicio
+		-entry points: index.js - eventualmente es traducido como el main
+		-test comand:
+		-git repository:
+		-keywords:
+		-author:
+		-license:
+		-type:
+	-usando la informaciòn de las preguntas se construye una archivo ".json"
+		-nombre: "package.json"
+	-verificación todo esta bien??????
+		-yes
+	-al final le brinda algo de datos o informaciòn del "npm"
+11-crear un archivo llamado "index.js"
+12-actualizan el contenido del archivo "index.js", con código que teams
+13-a terminal del folder de la aplicaciòn, ejecutar:
+	-node index.js
+14-a terminal del folder de la aplicaciòn, ejecutar:
+	npm install express
+15-Archivos importantes o folders:
+	-package.json
+		-Què es? R/archivo de configuraciòn del proyecto
+		-Què hace? R/describir todas las dependencias del proyecto
+	-package-lock.json
+		-Què es? R/archivo de bloqueo de versiones
+		-Què hace? R/guarda exactamente què versiones de paquetes fueron instalados
+	-node_modules
+		-què es? R/carpeta de librerìas
+		-què hace? R/contiene TODAS las depenedencias descargas
+	-segùn versiones y tipo de proyecto
+		-Readme.md
+			-a pesar de ser menos-preciado, en aplicaciones aplicaciones empresariales, 
+			puede contener informaciòn vital de arquitectura y compatibilidad de integraciòn.
+16-en el caso de Node.js, el "punto de inicio"
+	-index.js
+	-app.js
+	-o bien el archivo indicado en el "package.json"
+17-instalaciòn de extensiones 
+	-JavaScript ES6
+	-ESLint
+	-Prettier
+	-npm IntelliSence
+	-Path IntelliSence
+	-GitLens
+	-Erros Lens
+18-Corroboraciòn del ambiente despuès de las extensiones
+	-a terminal del folder de la aplicaciòn, ejecutar:
+		-node -v
+		-npm -v
+----------------------------------------------------------
+2-Práctica, entorno y add-in para:
+
+1-crearmos la carpeta
+	-S1-SW-2
+2-Accedemos al VSCode
+	-seleccionamos el folder
+3-a terminal del folder de la aplicaciòn
+	-npm init -y
+
+4-a terminal del folder de la aplicaciòn
+	-npm install express
+5-Estructura de la app
+	-app.js
+	-package.json
+	-package-lock.json
+	-usuarios.txt
+	-folder "public"
+		-estilos.css
+	-folder "views"
+		-bienvenida.html
+		-login.html
+	-node_modules
+	-------------------------------
+	Descripciòn de archivos:
+	1-app.js
+		-este es el servidor express
+	2-package.json
+		-informaciòn del proyecto
+	3-usuarios.txt
+		-simular la base datos
+	4-estilos.css
+		-hoja de estilos, apariencia
+	5-login.html
+		-pantalla de autenticacio`n
+	6-bienvenida.html
+		-pàgina después de la autenticaciòn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

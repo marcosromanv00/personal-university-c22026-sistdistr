@@ -1,0 +1,184 @@
+1.Recrear lista de reunión con nuevas personas.
+2.Grupos de trabajo 3
+	-Metódo para crear grupos:
+		1-tiempo para que el mismo estudiante busque aquellos afines por: tiempo, ubicación, conocido
+		2-tiempo para que aquellos que no se conozcan se reúnan
+		3-si, no se pudo el profe los asigna aleatoriamente
+	-Cuando tengan los grupos
+		-manda en el chat de teams - un solo miembro del grupo
+			-nombre completo - cédula - de los intregrantes
+			-
+3.Quiz de hoy a las 7.10pm - termina 7.15 o 7.17 - antes del break de 15 mins coordinado
+
+-------------------------------
+1.Continuamos con materia de API, REST, RPC, GraphQL
+
+2.ingresar a la terminal e ir al folder de la app, y correr:
+	-npm init -y
+	-npm init
+
+3.al archivo "package.json" - ingresar código mandado por teams.
+
+4.ingresar a la terminal e ir al folder de la app, y correr:
+	-npm install express
+5.crear el "app.js"  - ingresar código mandado por teams.
+
+6.crear carpeta y archivo "routes/graphqlRoutes.js" - ingresar código mandado por teams.
+
+
+
+
+---------------------
+NOTA:
+	-Pregunta estratégica, que se hace para saber qué es y usar:
+		-API
+			-¿Cómo se comunican los sistemas?
+		-RPC
+			-¿Qué función/procedimiento quiero ejecutar?
+		-REST
+			-¿Qué recurso quiero consultar o modificar?
+		-GraphQL
+			-¿Qué datos exactos necesito?
+	
+	-Pregunta:
+		-Desde el puntos de vista de consumo de recursos, como:
+			-Protocolos
+			-Análisis de colisiones
+			-Manejo de errores
+			-Optimización de datos
+			-Manejo de datos
+			-Ingesta de datos
+			-etc
+
+	-Para resolver el problema de arquitectura de recursos, en sistemas distribuidos, hay 2 aristas o posiciones:
+		-1-Desde el punto de vista de consumidor (ingesta, en sistemas distribuidos)
+			-¿cómo reduzco la cantidad de comunicaciones, procesos, y consumo de datos, manteniendo o mejorando el rendimiento de las operaciones?
+
+		-2-Desde el punto de vista de oferente (expone servicios, sistemas distribuidos)
+			-¿cómo mantengo o mejor el rendimiento del servicio, sin la necesidad de tener sobre-procesar la comunicación y procesos entrantes?
+
+	---------------
+	-Claves de propuesta de migración de tecnologías, con enfoque de protocolo, en sistemas distribuidos:
+		-Proponer análisis
+			-under-fetching - necesidad
+				-¿qué si se puede permitir mantener under-fetching?
+			-over-fetching - desperdicio
+				-¿qué si se puede permitir mantener over-fetching?
+		-Plan de reducción del "Gap"
+			-Tiempos
+				-en línea y fuera de línea
+					-¿tiempo de fuera de servicio?
+			-Tipo implementación
+				-Estratégica de implementación
+		-Modificación al despliegue de datos.
+			-Interfaces
+	---------------
+---------------------
+
+
+
+
+
+7.¿si bien es cierto se hace GET, es también necesario hacer un GET a un servicio graphQL?
+R/no, este trabaja con POST
+
+8-desde el punto de vista de manejo de errores ¿manejar los errores entre protocolos en sistemas distribuidos es igual?
+R/no, por el tipo de tecnología, protocolo, servicio y exposición de datos, así como consumo de datos
+
+---------------------
+OBSERVACION: una de las cosas interesantes, es investigar como se exponen los datos en sistemas distribuidos y como ingestarlos
+---------------------
+
+
+9.crear carpeta y archivo "services/graphqlService.js" - ingresar código mandado por teams.
+
+
+10.crear carpeta y archivo "views/index.html" - ingresar código mandado por teams.
+
+11.crear folder "public/imagenes", e ingresar las imágenes enviadas por teams
+
+
+
+-----------------
+NOTA:
+	-¿es necesario indicar el folder "public" de manera explícita, para acceder a recursos como imágenes?
+	R/no, porque fue definido en el "app.js"
+
+
+--------------
+
+12.crear folder "public/css/estilos.css", e ingresar las imágenes enviadas por teams
+
+
+*********************************************************************
+
+Sistemas distribuidos - enfoque de arquitectura
+	-comparar estructura de nuestros laboratorios con arquitectura de 3-Tier / 3-T / Three-Tier
+		-capa de presentación
+			-views/index.html
+			-public/css/estilos.css
+
+		-capa de negocio / aplicación - integración
+			-routes/graphRoutes.js - podría definir orquestación
+			-services/graphService.js - integración
+			-app.js
+
+		-capa datos - OJO.....
+			-TOMAR NOTA DE LA EXPLICACIÓN
+				-no hay models, dao, base de datos
+	----------------------------------------
+
+	-API
+		-RPC
+			-acción
+				-obtenerEstudiante
+					-simbolizar: ()
+		-REST
+			-recurso
+				-hacer un GET
+					-simbolizar: /
+		-GraphQL
+			-consulta
+				-query
+					-simbolizar: {}
+
+	----------------------------------------
+	
+	Extensión de características comparativas: API, RPC, REST, GrapQL (mutations, subscriptions)
+		-¿Què es?
+		-¿Idea principal?
+		-¿Unidad principal?
+		-¿Forma de llamada?
+
+
+
+***************************************************************************************
+
+Comparación "Cron Jobs" vs "GraphQL" -: Subscriptions
+	-"Cron Jobs"
+		-Propósito:
+			-ejecutar tarea automática en un horario
+		-Activación:
+			-Por tiempo 
+		-Comunciación:
+			-Normalmente es servidor-: proceso
+		-Tecnología:
+			-"cron", "node-cron"
+	-"GraphQL" -: Subscriptions
+		-Propósito:
+			-Notificar al cliente cuando un evento ocurre
+		-Activación:
+			-Por evento
+		-Comunciación:
+			-Normalmente es servidor-: cliente
+		-Tecnología:
+			-"WebSocket"
+
+
+
+NOTA:
+Al final incluir como parte de la práctica de hoy:
+	-PrintScreen 
+		-se vea la estructura de app.
+		-la termina corriendo sin errores
+		-y la app del explorer

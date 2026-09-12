@@ -1,0 +1,17 @@
+{
+  "name": "s5-sw",
+  "version": "1.0.0",
+  "description": "Aplicación web Node.js que consume servicios financieros",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

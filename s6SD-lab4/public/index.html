@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+ 
+<html lang="es">
+ 
+<head>
+ 
+    <meta charset="UTF-8">
+ 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+ 
+    <title>
+        UNA - Sistemas distribuidos
+    </title>
+ 
+    <link
+        rel="stylesheet"
+        href="/css/styles.css"
+    >
+ 
+</head>
+ 
+ 
+<body>
+ 
+    <header class="header">
+ 
+        <div class="header-content">
+ 
+            <div>
+                <span class="eyebrow">
+                    Marcos Román Valverde
+                </span>
+ 
+                <h1>
+                    <span>Universidad Nacional - 2026 <br></span>
+                    <span>Sistemas Distribuidos <br></span>
+                    <span>Observatorio Satelital</span>
+                </h1>
+ 
+                <p>
+                    Ejemplo de Node.js + Express +
+                    Microfrontends
+                </p>
+            </div>
+ 
+            <div class="satellite-icon">
+                🛰️
+            </div>
+ 
+        </div>
+ 
+    </header>
+ 
+ 
+    <main class="container">
+ 
+        <section class="intro">
+ 
+            <h2>
+                Datos de observación de la Tierra
+            </h2>
+ 
+            <p>
+                Esta página está compuesta por
+                componentes independientes que
+                consumen información de servicios
+                de NASA.
+            </p>
+ 
+        </section>
+ 
+ 
+        <!--
+            MICROFRONTEND 1
+ 
+            El componente se encarga de:
+            - llamar a /api/solar
+            - procesar los datos
+            - construir su HTML
+            - aplicar su animación
+        -->
+ 
+        <section class="component-section">
+ 
+            <solar-card></solar-card>
+ 
+        </section>
+ 
+ 
+        <!--
+            MICROFRONTEND 2
+ 
+            El componente se encarga de:
+            - cargar /api/satellite-image
+            - mostrar la imagen
+            - gestionar loading/error
+            - aplicar su animación
+        -->
+ 
+        <section class="component-section">
+ 
+            <satellite-card></satellite-card>
+ 
+        </section>
+ 
+ 
+    </main>
+ 
+ 
+    <footer>
+ 
+        <p>
+            Sistemas Distribuidos — Node.js + Express +
+            NASA POWER + NASA GIBS
+        </p>
+ 
+    </footer>
+ 
+ 
+    <!--
+        Los componentes son módulos JavaScript
+        independientes.
+    -->
+ 
+    <script
+        type="module"
+        src="/components/solar-card.js"
+    ></script>
+ 
+    <script
+        type="module"
+        src="/components/satellite-card.js"
+    ></script>
+ 
+</body>
+ 
+</html>
+ 

@@ -1,0 +1,165 @@
+
+ 
+========================================
+REGISTRO FINANCIERO
+========================================
+ 
+Fecha:
+21/8/2026, 8:52:40 p. m.
+ 
+ 
+BITCOIN
+----------------------------------------
+Servicio: CoinGecko
+Código: BTC
+Precio USD: 78356
+ 
+ 
+ETHEREUM
+----------------------------------------
+Servicio: CoinGecko
+Código: ETH
+Precio USD: 2507.59
+ 
+ 
+TIPO DE CAMBIO
+----------------------------------------
+Servicio: Frankfurter
+USD -> EUR
+Tipo de cambio: 0.85571
+ 
+ 
+========================================
+ 
+
+ 
+========================================
+REGISTRO FINANCIERO
+========================================
+ 
+Fecha:
+21/8/2026, 8:52:40 p. m.
+ 
+ 
+BITCOIN
+----------------------------------------
+Servicio: CoinGecko
+Código: BTC
+Precio USD: 78356
+ 
+ 
+ETHEREUM
+----------------------------------------
+Servicio: CoinGecko
+Código: ETH
+Precio USD: 2507.59
+ 
+ 
+TIPO DE CAMBIO
+----------------------------------------
+Servicio: Frankfurter
+USD -> EUR
+Tipo de cambio: 0.85571
+ 
+ 
+========================================
+ 
+
+ 
+========================================
+REGISTRO FINANCIERO
+========================================
+ 
+Fecha:
+21/8/2026, 8:52:40 p. m.
+ 
+ 
+BITCOIN
+----------------------------------------
+Servicio: CoinGecko
+Código: BTC
+Precio USD: 78356
+ 
+ 
+ETHEREUM
+----------------------------------------
+Servicio: CoinGecko
+Código: ETH
+Precio USD: 2507.59
+ 
+ 
+TIPO DE CAMBIO
+----------------------------------------
+Servicio: Frankfurter
+USD -> EUR
+Tipo de cambio: 0.85571
+ 
+ 
+========================================
+ 
+
+ 
+========================================
+REGISTRO FINANCIERO
+========================================
+ 
+Fecha:
+21/8/2026, 8:57:50 p. m.
+ 
+ 
+BITCOIN
+----------------------------------------
+Servicio: undefined
+Código: undefined
+Precio USD: undefined
+ 
+ 
+ETHEREUM
+----------------------------------------
+Servicio: undefined
+Código: undefined
+Precio USD: undefined
+ 
+ 
+TIPO DE CAMBIO
+----------------------------------------
+Servicio: Frankfurter
+USD -> EUR
+Tipo de cambio: 0.85571
+ 
+ 
+========================================
+ 
+
+ 
+========================================
+REGISTRO FINANCIERO
+========================================
+ 
+Fecha:
+21/8/2026, 9:00:01 p. m.
+ 
+ 
+BITCOIN
+----------------------------------------
+Servicio: CoinGecko
+Código: BTC
+Precio USD: 78455
+ 
+ 
+ETHEREUM
+----------------------------------------
+Servicio: CoinGecko
+Código: ETH
+Precio USD: 2512.81
+ 
+ 
+TIPO DE CAMBIO
+----------------------------------------
+Servicio: Frankfurter
+USD -> EUR
+Tipo de cambio: 0.85571
+ 
+ 
+========================================
+ 

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+ 
+<html lang="es">
+ 
+<head>
+ 
+    <meta charset="UTF-8">
+ 
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+ 
+    <title>Aplicación GraphQL</title>
+ 
+    <link rel="stylesheet"
+          href="/css/estilos.css">
+ 
+</head>
+ 
+ 
+<body>
+ 
+ 
+<header>
+ 
+    <h1>Sistemas Distribuidos - 2026 <br> Explorador de APIs GraphQL</h1>
+ 
+    <p>
+        Node.js + Express + GraphQL
+    </p>
+ 
+</header>
+ 
+ 
+<main>
+ 
+ 
+    <!-- ==========================================
+         SECCIÓN DE PAÍSES
+         ========================================== -->
+ 
+    <section>
+ 
+        <h2><img src="imagenes/una1.png" alt="Descripción" class="h2-icono"> Países</h2>
+ 
+        <button onclick="cargarPaises()">
+            Consultar países
+        </button>
+ 
+        <div id="paises"
+             class="contenedor">
+ 
+            <p>
+                Presione el botón para consultar
+                la API GraphQL de países.
+            </p>
+ 
+        </div>
+ 
+    </section>
+ 
+ 
+    <!-- ==========================================
+         SECCIÓN DE PERSONAJES
+         ========================================== -->
+ 
+    <section>
+ 
+        <h2><img src="imagenes/una2.png" alt="Descripción" class="h2-icono"> Personajes de Rick and Morty</h2>
+ 
+        <button onclick="cargarPersonajes()">
+            Consultar personajes
+        </button>
+ 
+        <div id="personajes"
+             class="contenedor">
+ 
+            <p>
+                Presione el botón para consultar
+                la API GraphQL de Rick and Morty.
+            </p>
+ 
+        </div>
+ 
+    </section>
+ 
+ 
+</main>
+ 
+ 
+<script>
+ 
+    // ==================================================
+    // CARGAR PAÍSES
+    // ==================================================
+ 
+    async function cargarPaises() {
+ 
+        const contenedor =
+            document.getElementById("paises");
+ 
+        contenedor.innerHTML =
+            "<p>Cargando países...</p>";
+ 
+ 
+        try {
+ 
+            const respuesta =
+                await fetch("/api/paises");
+ 
+            const paises =
+                await respuesta.json();
+ 
+ 
+            contenedor.innerHTML = "";
+ 
+ 
+            paises.forEach(pais => {
+ 
+                const tarjeta =
+                    document.createElement("div");
+ 
+                tarjeta.className = "tarjeta";
+ 
+                tarjeta.innerHTML = `
+ 
+                    <h3>
+                        ${pais.emoji} ${pais.name}
+                    </h3>
+ 
+                    <p>
+                        <strong>Código:</strong>
+                        ${pais.code}
+                    </p>
+ 
+                    <p>
+                        <strong>Capital:</strong>
+                        ${pais.capital || "No disponible"}
+                    </p>
+ 
+                    <p>
+                        <strong>Moneda:</strong>
+                        ${pais.currency || "No disponible"}
+                    </p>
+ 
+                `;
+ 
+                contenedor.appendChild(tarjeta);
+ 
+            });
+ 
+ 
+        } catch (error) {
+ 
+            contenedor.innerHTML =
+                "<p>Error al obtener países.</p>";
+ 
+            console.error(error);
+        }
+    }
+ 
+ 
+    // ==================================================
+    // CARGAR PERSONAJES
+    // ==================================================
+ 
+    async function cargarPersonajes() {
+ 
+        const contenedor =
+            document.getElementById("personajes");
+ 
+        contenedor.innerHTML =
+            "<p>Cargando personajes...</p>";
+ 
+ 
+        try {
+ 
+            const respuesta =
+                await fetch("/api/personajes");
+ 
+            const datos =
+                await respuesta.json();
+ 
+ 
+            contenedor.innerHTML = "";
+ 
+ 
+            datos.results.forEach(personaje => {
+ 
+                const tarjeta =
+                    document.createElement("div");
+ 
+                tarjeta.className = "tarjeta";
+ 
+ 
+                tarjeta.innerHTML = `
+ 
+                    <img
+                        src="${personaje.image}"
+                        alt="${personaje.name}"
+                    >
+ 
+                    <h3>
+                        ${personaje.name}
+                    </h3>
+ 
+                    <p>
+                        <strong>Estado:</strong>
+                        ${personaje.status}
+                    </p>
+ 
+                    <p>
+                        <strong>Especie:</strong>
+                        ${personaje.species}
+                    </p>
+ 
+                    <p>
+                        <strong>Género:</strong>
+                        ${personaje.gender}
+                    </p>
+ 
+                `;
+ 
+ 
+                contenedor.appendChild(tarjeta);
+ 
+            });
+ 
+ 
+        } catch (error) {
+ 
+            contenedor.innerHTML =
+                "<p>Error al obtener personajes.</p>";
+ 
+            console.error(error);
+        }
+ 
+    }
+ 
+</script>
+ 
+ 
+</body>
+ 
+</html>

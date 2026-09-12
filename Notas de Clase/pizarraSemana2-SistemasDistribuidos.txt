@@ -1,0 +1,208 @@
+1.Remotamos el programa de curso, o carta al estudiante, suministrada desde la semana pasada
+	-Retomamos puntos importantes
+	-aclaramos dudas
+	-el resto el estudiante lo puede revisar (de nuevo)
+	-contacto del profesor: una.luisraul@gmail.com
+	-en un punto determinado se detiene la aplicación de quices
+
+2-Retomamos donde aviamos quedado la semana 1
+	-Ejercicio
+3-Impartimos el contenido de la semana 2.
+-----------------------------------------------------------------------------------------------
+1-Retomamos el ejercicio S1-SW-2
+	-Quedamos:
+	Descripciòn de archivos:
+	1-app.js
+		-este es el servidor express
+	2-package.json
+		-informaciòn del proyecto
+	3-usuarios.txt
+		-simular la base datos
+	4-estilos.css
+		-hoja de estilos, apariencia
+	5-login.html
+		-pantalla de autenticacio`n
+	6-bienvenida.html
+		-pàgina después de la autenticaciòn
+
+2-Vamos a ingresar el código
+	-usuarios.txt - enviado por teams
+	-estilos.css - enviado por teams
+	-login.html - enviado por teams
+	-bienvenida.html - enviado por teams
+
+	-app.js - enviado por teams
+		-express.urlencoded
+			-HTTP -: post, put...
+				-application/x-www-from-urlencoded
+
+3-Una vez explicado todo el código
+	-Flujo
+		-ejecuta app.js
+		-app.listen - 3000
+		-node.js abre puerto 3000
+		-el servidor queda esperando solicitudes
+		-Imprime en consola
+			-servidor iniciado
+		-el usurio puede acceder desde:
+			-http://localhost:3000
+
+4-se van a la carpeta del proyecto, en la terminal
+	-node app.js
+5-Control+C, interrumpe el servidor
+-----------------------------------------------------------------------------------------------
+1-Comenzamos tema protocolo
+	-Protocolo orientado en el curso
+2-En donde se usan: - que el profesor explica
+	-Internet
+	-Redes
+	-Emails
+	-Transferencia de archivos
+	-APIs REST
+	-RPC
+	-GraphQL
+	-Bases de Datos
+	-IoT	
+	-Blockchain
+3-elementos de un protocolo - que el profesor explica
+	-sintáxis
+	-semántica
+	-temporización.
+	-control de errores
+	-control de flujo
+	-seguridad
+4-Qué pasa si o hay protocolos
+5-Escalabilidad
+	-Horizontal - más computadores - escalar hacia afuera - que el profesor explica
+	-vertical - mejores recursos - escalar hacia arriba - que el profesor explica
+6-Balanceo
+	-Métodos o técnicasd usadas - que el profesor explica
+7-Ejemplos de protocolos que el profesor explica
+8-Comparativo de API, REST, RPC y GraphQL
+	-¿qué es?
+		-API		
+		-REST
+		-RPC
+		-GraphQL
+	-usos
+		-API		
+		-REST
+		-RPC
+		-GraphQL
+	-Ventajas
+		-API		
+		-REST
+		-RPC
+		-GraphQL
+	-Desventajas
+		-API		
+		-REST
+		-RPC
+		-GraphQL
+---------------------------------------------------------------------------------------------
+Práctica REST
+1-ingresan al folder de app, "S2-SW-REST"
+2-en la terminald de la app, "S2-SW-REST"
+	-nmp init -y
+	o
+	-nmp init 
+3- en la terminald de la app, "S2-SW-REST"
+	-npm install express axios
+		-instala express
+			-framework para node.js
+			-permite crear servidores web y APIs de forma rápida y sencilla
+			-gestionar rutas
+			-manejar las solicitudes y respuestas HTTP
+		-axios
+			-biblioteca realizar solicitudes HTTP
+4-Modelo
+	-Cliente
+	-express
+	-routes
+	-servicios
+	-APIs con REST
+5-app.js
+	-ingresar el código de enviado por teams
+6-views/index.html
+	-ingresar el código de enviado por teams
+7-public/css/estilos.css
+	-ingresar el código de enviado por teams
+8-public/favicon.ico
+	-recurso - 	-ingresar el código de enviado por teams
+9-routes/api.js
+	-ingresar el código de enviado por teams
+10-services/climaService.js
+	-ingresar el código de enviado por teams
+11-services/cambioService.js
+	-ingresar el código de enviado por teams
+12-services/actividadService.js
+	-ingresar el código de enviado por teams
+13-deben de tener o verificar el "package.json"
+	-indique en el main: "app.js"
+14-en la terminald de la app, "S2-SW-REST"
+15-Capas
+	-presentación
+		-views
+	-rutas (controller)
+		-routes
+	-servicios
+		-service
+	-integración externa
+		-REST del clima, tipo de cambio y actividad.
+16-Flujo - para la próxima lección
+-----------------------------------------------------------------------
+Evalución
+Quiz 1
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
