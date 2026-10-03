@@ -19,25 +19,37 @@ html_content = f'''<!DOCTYPE html>
     <style>
         @page {{
             size: A4;
-            margin: 1.8cm 1.5cm 2cm 1.5cm;
+            margin: 1.4cm 1.4cm 1.4cm 1.4cm;
+        }}
+        * {{
+            box-sizing: border-box;
         }}
         body {{
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
             color: #1e293b;
-            line-height: 1.55;
-            font-size: 10pt;
+            line-height: 1.45;
+            font-size: 9.1pt;
             background: #ffffff;
             margin: 0;
             padding: 0;
         }}
-        .cover {{
+        .page {{
             page-break-after: always;
+            box-sizing: border-box;
+            max-height: 26.5cm;
+            overflow: hidden;
+        }}
+        .page-last {{
+            page-break-after: avoid;
+        }}
+        
+        /* PORTADA */
+        .cover {{
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 25cm;
-            padding: 2cm 1cm 1.5cm 1cm;
-            box-sizing: border-box;
+            min-height: 25.5cm;
+            padding: 1.5cm 0.8cm 1cm 0.8cm;
             border-top: 8px solid #c92a2a;
         }}
         .cover-header {{
@@ -60,7 +72,7 @@ html_content = f'''<!DOCTYPE html>
             font-size: 11pt;
             color: #c92a2a;
             font-weight: 700;
-            margin-top: 6px;
+            margin-top: 8px;
             letter-spacing: 0.3px;
         }}
         .cover-main {{
@@ -71,113 +83,119 @@ html_content = f'''<!DOCTYPE html>
             display: inline-block;
             background: #fee2e2;
             color: #991b1b;
-            padding: 5px 16px;
+            padding: 5px 18px;
             border-radius: 999px;
-            font-size: 9.5pt;
+            font-size: 9pt;
             font-weight: 700;
             letter-spacing: 0.5px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             border: 1px solid #fecaca;
         }}
         .cover-title {{
-            font-size: 22pt;
+            font-size: 20pt;
             font-weight: 800;
             color: #0f172a;
             line-height: 1.25;
-            margin: 0 0 12px 0;
+            margin: 0 0 10px 0;
         }}
         .cover-subtitle {{
-            font-size: 12pt;
+            font-size: 11.5pt;
             color: #64748b;
-            max-width: 650px;
+            max-width: 620px;
             margin: 0 auto;
         }}
         .cover-meta {{
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 18px 24px;
-            margin-top: 30px;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 24px;
         }}
         .cover-meta table {{
             width: 100%;
             border-collapse: collapse;
         }}
         .cover-meta td {{
-            padding: 6px 8px;
-            font-size: 9.5pt;
+            padding: 5px 8px;
+            font-size: 9.3pt;
         }}
         .cover-meta .label {{
             font-weight: 700;
             color: #475569;
-            width: 30%;
+            width: 28%;
         }}
         .cover-meta .val {{
             color: #0f172a;
         }}
+
+        /* ENCABEZADOS Y TEXTO */
         h1 {{
-            font-size: 15pt;
+            font-size: 13pt;
             color: #0f172a;
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 6px;
-            margin-top: 26px;
-            margin-bottom: 12px;
-            page-break-after: avoid;
+            padding-bottom: 3px;
+            margin-top: 0;
+            margin-bottom: 8px;
         }}
         h2 {{
-            font-size: 12pt;
+            font-size: 10.5pt;
             color: #1e293b;
-            margin-top: 18px;
-            margin-bottom: 8px;
-            page-break-after: avoid;
+            margin-top: 10px;
+            margin-bottom: 5px;
         }}
         h3 {{
-            font-size: 10.5pt;
+            font-size: 9.5pt;
             color: #334155;
-            margin-top: 14px;
-            margin-bottom: 6px;
-            page-break-after: avoid;
+            margin-top: 8px;
+            margin-bottom: 3px;
         }}
         p, li {{
             color: #334155;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             text-align: justify;
         }}
         ul, ol {{
-            margin-top: 4px;
-            margin-bottom: 12px;
-            padding-left: 24px;
+            margin-top: 2px;
+            margin-bottom: 6px;
+            padding-left: 18px;
         }}
         .code-box {{
             background: #0f172a;
             color: #f1f5f9;
-            padding: 10px 14px;
-            border-radius: 6px;
+            padding: 6px 9px;
+            border-radius: 4px;
             font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 8pt;
+            font-size: 7.1pt;
             white-space: pre-wrap;
             word-break: break-all;
-            margin: 8px 0 14px 0;
-            border-left: 4px solid #c92a2a;
-            page-break-inside: avoid;
+            margin: 4px 0 8px 0;
+            border-left: 3px solid #c92a2a;
+            line-height: 1.35;
+        }}
+        .cols-2 {{
+            display: flex;
+            gap: 10px;
+            margin: 4px 0 8px 0;
+        }}
+        .cols-2 > div {{
+            flex: 1;
         }}
         table.data-table {{
             width: 100%;
             border-collapse: collapse;
-            margin: 10px 0 16px 0;
-            font-size: 8.5pt;
-            page-break-inside: avoid;
+            margin: 6px 0 8px 0;
+            font-size: 7.8pt;
         }}
         table.data-table th {{
             background: #0f172a;
             color: #ffffff;
             font-weight: 600;
             text-align: left;
-            padding: 7px 9px;
+            padding: 4px 6px;
             border: 1px solid #334155;
         }}
         table.data-table td {{
-            padding: 6px 9px;
+            padding: 3.5px 6px;
             border: 1px solid #e2e8f0;
             color: #334155;
         }}
@@ -186,9 +204,9 @@ html_content = f'''<!DOCTYPE html>
         }}
         .badge {{
             display: inline-block;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 7.5pt;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 6.8pt;
             font-weight: 700;
             font-family: monospace;
         }}
@@ -200,62 +218,77 @@ html_content = f'''<!DOCTYPE html>
         
         .screenshot-card {{
             border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            padding: 8px;
+            border-radius: 5px;
+            padding: 5px;
             background: #f8fafc;
-            margin: 12px 0 18px 0;
-            page-break-inside: avoid;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin: 5px 0 8px 0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            text-align: center;
         }}
         .screenshot-card img {{
-            width: 100%;
-            border-radius: 4px;
-            display: block;
+            max-width: 100%;
+            max-height: 6.8cm;
+            width: auto;
+            border-radius: 3px;
+            display: inline-block;
             border: 1px solid #e2e8f0;
         }}
         .screenshot-cap {{
-            font-size: 8pt;
+            font-size: 7.4pt;
             color: #64748b;
             text-align: center;
-            margin-top: 6px;
+            margin-top: 4px;
             font-weight: 600;
         }}
         .quote-box {{
             background: #f8fafc;
-            border-left: 4px solid #c92a2a;
-            padding: 10px 14px;
-            margin: 8px 0 12px 0;
+            border-left: 3.5px solid #c92a2a;
+            padding: 8px 12px;
+            margin: 5px 0 8px 0;
             font-style: italic;
             color: #334155;
-            border-radius: 0 6px 6px 0;
-            page-break-inside: avoid;
-        }}
-        .page-break {{
-            page-break-before: always;
+            border-radius: 0 5px 5px 0;
+            font-size: 8.6pt;
         }}
     </style>
 </head>
 <body>
 
-<!-- PORTADA -->
-<div class="cover">
+<!-- PÁGINA 1: PORTADA (RÚBRICA SECCIÓN 9) -->
+<div class="page cover">
     <div class="cover-header">
-        <div class="cover-inst">Universidad Nacional de Costa Rica (UNA)</div>
+        <div class="cover-inst">Universidad Nacional (UNA)</div>
         <div class="cover-school">Facultad de Ciencias Exactas y Naturales • Escuela de Informática</div>
         <div class="cover-course">EIF-401 Sistemas Distribuidos • II Ciclo 2026</div>
     </div>
     
     <div class="cover-main">
-        <div class="cover-tag">DOCUMENTACIÓN TÉCNICA OFICIAL</div>
-        <div class="cover-title">Sistema de Gestión Académica Distribuido</div>
-        <div class="cover-subtitle">Integración de Arquitecturas REST, Invocación de Procedimientos Remotos (JSON-RPC 2.0) y Consumo de Servicios Web GraphQL con Tolerancia a Fallos</div>
+        <div class="cover-tag">DOCUMENTACIÓN OFICIAL DEL PROYECTO</div>
+        <div class="cover-title">Proyecto Grupal: Desarrollo de Aplicación Web con REST, RPC y Servicios Web</div>
+        <div class="cover-subtitle">Sistema de Gestión Académica Distribuido (SGA) con Arquitectura de Tres Capas e Integración de Protocolos</div>
     </div>
     
     <div class="cover-meta">
         <table>
             <tr>
-                <td class="label">Número de Grupo:</td>
-                <td class="val"><strong>Grupo #6</strong> (Tema 3: Sistema de Gestión Académica)</td>
+                <td class="label">Institución:</td>
+                <td class="val">Universidad Nacional (UNA) - Escuela de Informática</td>
+            </tr>
+            <tr>
+                <td class="label">Curso:</td>
+                <td class="val">Sistemas Distribuidos (EIF-401)</td>
+            </tr>
+            <tr>
+                <td class="label">Proyecto:</td>
+                <td class="val">Proyecto Grupal: Desarrollo de Aplicación Web con REST, RPC y Servicios Web</td>
+            </tr>
+            <tr>
+                <td class="label">Tema Seleccionado:</td>
+                <td class="val"><strong>Tema 3: Sistema de gestión académica</strong></td>
+            </tr>
+            <tr>
+                <td class="label">Grupo:</td>
+                <td class="val"><strong>Grupo #6</strong></td>
             </tr>
             <tr>
                 <td class="label">Integrantes:</td>
@@ -266,245 +299,267 @@ html_content = f'''<!DOCTYPE html>
                 </td>
             </tr>
             <tr>
-                <td class="label">Profesor Catedrático:</td>
-                <td class="val">M.Sc. Luis Raúl</td>
-            </tr>
-            <tr>
-                <td class="label">Fecha de Entrega:</td>
+                <td class="label">Fecha:</td>
                 <td class="val">02 de Octubre del 2026</td>
             </tr>
         </table>
     </div>
 </div>
 
-<!-- SECCION 1: ARCHIVO TXT DEL EQUIPO -->
-<h1>1. Información Formal del Equipo (Grupo-6.txt)</h1>
-<p>En estricto cumplimiento con la directriz obligatoria del proyecto (Rúbrica punto 2a y 5i), a continuación se reproduce el contenido fidedigno del archivo formal <code>Grupo-6.txt</code> incluido en la raíz de la entrega:</p>
+<!-- PÁGINA 2: INTRODUCCIÓN Y DESCRIPCIÓN DEL SISTEMA (RÚBRICA SECCIÓN 9) -->
+<div class="page">
+    <h1>1. Introducción</h1>
+    <p>La administración y seguimiento académico en una institución de educación superior contemporánea involucra la gestión coordinada de múltiples procesos transaccionales: control de expedientes de matrícula, asignación y verificación de cupos en asignaturas curriculares, cálculo algorítmico de ponderaciones de calificaciones por créditos, y la vinculación con entidades externas para la homologación de convenios internacionales de movilidad estudiantil.</p>
+    <p>El problema central que pretende resolver esta aplicación es la integración unificada, eficiente y desacoplada de estos procesos en una única solución de software distribuida. Frecuentemente, en las organizaciones educativas estas operaciones se efectúan de manera aislada o mediante herramientas dispersas, lo cual suscita inconsistencias de información, cuellos de botella en el procesamiento centralizado de notas y retrasos al validar procedencias y aranceles de estudiantes foráneos.</p>
+    <p>La solución desarrollada articula en una sola plataforma web los tres mecanismos fundamentales de comunicación entre aplicaciones y servicios estudiados en el curso: <strong>solicitudes REST</strong> para la manipulación orientada a recursos y persistencia, <strong>solicitudes RPC</strong> para la ejecución remota de cómputos algorítmicos en el servidor, y <strong>Servicios Web</strong> para la interoperabilidad con servicios externos.</p>
 
-<div class="code-box">================================================================================
-UNIVERSIDAD NACIONAL (UNA) - ESCUELA DE INFORMÁTICA
-CURSO: SISTEMAS DISTRIBUIDOS (C2-2026)
-GRUPO NÚMERO: 6
-TEMA ASIGNADO: Tema 3 - Sistema de gestión académica
-================================================================================
+    <h1>2. Descripción del Sistema</h1>
 
-INTEGRANTES DEL EQUIPO:
+    <h2>2.1 Objetivo</h2>
+    <p>Desarrollar e implementar una aplicación web distribuida, funcional e integrada para la administración integral de estudiantes, cursos, matrículas y calificaciones de la Escuela de Informática de la Universidad Nacional, demostrando de manera práctica la integración de solicitudes REST, procedimientos remotos RPC y consumo de un Servicio Web externo.</p>
 
-1. Nombre Completo: Marcos Román Valverde
-   Cédula: 3-0529-0253
-   Correo Institucional: marcos.roman.valverde@est.una.ac.cr
+    <h2>2.2 Usuarios del Sistema</h2>
+    <ul>
+        <li><strong>Administrador Académico / Cátedra:</strong> Supervisa el dashboard general, analiza las métricas de cohorte en tiempo real, monitorea la ocupación de cursos y administra los expedientes del estudiantado.</li>
+        <li><strong>Docentes y Evaluadores:</strong> Consultan listas de clase, asientan y modifican evaluaciones parciales (Parcial 1, Parcial 2, Proyecto, Laboratorios) y verifican el estado de aprobación de los alumnos.</li>
+        <li><strong>Coordinador de Movilidad e Intercambio Internacional:</strong> Valida información geográfica de estudiantes foráneos mediante el servicio web externo y liquida aranceles semestrales diferenciados.</li>
+    </ul>
 
-2. Nombre Completo: Emanuel Soto Cordero
-   Cédula: 1-1823-0492
-   Correo Institucional: emanuel.soto.cordero@est.una.ac.cr
+    <h2>2.3 Funcionalidades Principales</h2>
+    <ul>
+        <li><strong>Dashboard de Monitoreo Académico:</strong> Indicadores en tiempo real (KPIs): población estudiantil activa, catálogo de cursos, matrículas formalizadas y porcentaje global de aprobación.</li>
+        <li><strong>Consulta Reactiva de Expedientes:</strong> Visualización tabular de estudiantes y asignaturas con filtros instantáneos por cédula, nombre o código de materia.</li>
+        <li><strong>Gestión Integral de Expedientes (CRUD):</strong> Alta de estudiantes, formalización de matrículas con control de cupos, asentamiento ponderado de notas y eliminación en cascada.</li>
+        <li><strong>Cálculo Remoto de Promedio Ponderado por Créditos (RPC):</strong> Invocación en servidor que pondera las notas según el peso curricular de cada materia y determina la condición de honor.</li>
+        <li><strong>Análisis Estadístico de Rendimiento de Grupo (RPC):</strong> Cálculo algorítmico centralizado de media aritmética, varianza, desviación estándar poblacional y tasa de aprobación.</li>
+        <li><strong>Homologación de Estudiantes Extranjeros y Aranceles (Servicio Web):</strong> Consulta de países, capitales y divisas mediante GraphQL con mecanismo de contingencia y tolerancia a fallos.</li>
+    </ul>
 
-3. Nombre Completo: Anthony Cerdas Morales
-   Cédula: 4-0231-0814
-   Correo Institucional: anthony.cerdas.morales@est.una.ac.cr
-
-================================================================================
-FECHA DE ENTREGA: 02 de Octubre del 2026
-PROFESOR: M.Sc. Luis Raúl
-================================================================================</div>
-
-<!-- SECCION 2: INTRODUCCION Y DESCRIPCION -->
-<h1>2. Introducción y Arquitectura del Sistema</h1>
-<p>La administración académica en el entorno universitario actual exige el manejo eficiente y desacoplado de información transaccional distribuida: el control de expedientes de matrícula, la oferta y cupos de asignaturas curriculares, el cómputo algorítmico centralizado de ponderaciones de calificaciones por créditos, y la interoperabilidad con servicios externos para convalidar convenios internacionales de intercambio.</p>
-<p>El presente proyecto implementa una solución de software de arquitectura distribuida de tres capas (Three-Tier Architecture) sobre la plataforma Node.js y Express, unificando tres paradigmas fundamentales estudiados durante el curso:</p>
-<ul>
-    <li><strong>Semana 2 - Solicitudes REST:</strong> Operaciones CRUD sobre recursos canónicos (<code>/api/academico/estudiantes</code>, <code>/matriculas</code>, <code>/calificaciones</code>, <code>/cursos</code>) utilizando los verbos HTTP <code>GET</code>, <code>POST</code>, <code>PUT</code> y <code>DELETE</code>.</li>
-    <li><strong>Semana 3 - Solicitudes RPC:</strong> Implementación del estándar formal <strong>JSON-RPC 2.0</strong> sobre HTTP POST para la invocación remota de procedimientos algorítmicos complejos en el servidor (cálculo de promedio ponderado y análisis estadístico de cohorte).</li>
-    <li><strong>Semana 4 - Servicios Web:</strong> Consumo de una API externa basada en <strong>GraphQL</strong> (Países y Monedas) para homologar automáticamente estudiantes foráneos y liquidar aranceles internacionales con mecanismo de tolerancia a fallos (resiliencia y caché local).</li>
-</ul>
-
-<div class="page-break"></div>
-
-<!-- SECCION 3: INTERFACES WEB CON EVIDENCIAS -->
-<h1>3. Evidencia y Detalle de las 4 Interfaces Web</h1>
-<p>Conforme al punto 4 de la especificación técnica, la aplicación cuenta con 4 interfaces web funcionales, integradas, navegables y con coherencia visual bajo la regla de diseño institucional 90-10 de la Universidad Nacional:</p>
-
-<h2>3.1 Interfaz 1: Dashboard y Analítica Ejecutiva (Ruta: <code>/</code>)</h2>
-<p><strong>Propósito:</strong> Centro de comando y monitoreo en tiempo real de la cohorte académica. Despliega tarjetas de métricas clave (KPIs de población activa, asignaturas, matrículas formalizadas y porcentaje de aprobación), gráfico SVG de distribución de rendimiento, estado de los micro-servicios y el registro reciente de expedientes.</p>
-<div class="screenshot-card">
-    <img src="{img1}" alt="Interfaz 1 - Dashboard Ejecutivo">
-    <div class="screenshot-cap">Figura 1: Interfaz 1 (Dashboard de Monitoreo Académico y Arquitectura Distribuida en Tiempo Real)</div>
+    <h2>2.4 Tema Seleccionado</h2>
+    <p>Se seleccionó el <strong>Tema 3: Sistema de gestión académica</strong>, correspondiente al catálogo de temas propuestos en la rúbrica oficial (Sección 3 del documento de especificación).</p>
 </div>
 
-<h2>3.2 Interfaz 2: Consulta de Información REST (Ruta: <code>/consulta</code>)</h2>
-<p><strong>Propósito:</strong> Demuestra el consumo de operaciones REST mediante el verbo HTTP <code>GET</code>. Incluye buscador reactivo instantáneo por cédula, nombre o código, catálogo alternable de Estudiantes y Cursos, modal de desglose de notas (Parcial 1, Parcial 2, Proyecto, Labs) y una consola inspectora en vivo de la solicitud HTTP.</p>
-<div class="screenshot-card">
-    <img src="{img2}" alt="Interfaz 2 - Consulta REST">
-    <div class="screenshot-cap">Figura 2: Interfaz 2 (Búsqueda Reactiva y Consulta de Expedientes vía HTTP GET)</div>
+<!-- PÁGINA 3: INTERFACES (1 y 2) (RÚBRICA SECCIÓN 9) -->
+<div class="page">
+    <h1>3. Interfaces (Parte 1: Dashboard y Consulta)</h1>
+    <p>Conforme al punto 4 de la especificación técnica, la aplicación cuenta con 4 interfaces web funcionales, integradas, navegables entre sí mediante una barra de navegación superior estandarizada y con diseño institucional uniforme:</p>
+
+    <h2>3.1 Interfaz 1: Inicio / Dashboard (Ruta: <code>/</code>)</h2>
+    <p><strong>Función de la Interfaz:</strong> Funciona como la página principal de la aplicación. Ofrece al usuario un centro de monitoreo ejecutivo con el nombre del sistema, el menú de navegación completo, el resumen de información mediante cuatro tarjetas métricas (KPIs), la tabla de arquitectura con el mapeo de tecnologías, el estado de los micro-servicios y el registro de estudiantes recientes.</p>
+    <div class="screenshot-card">
+        <img src="{img1}" alt="Interfaz 1 - Inicio / Dashboard">
+        <div class="screenshot-cap">Figura 1: Interfaz 1 - Inicio / Dashboard (Centro de Mando y KPIs Académicos en Tiempo Real)</div>
+    </div>
+
+    <h2>3.2 Interfaz 2: Consulta de Información (Ruta: <code>/consulta</code>)</h2>
+    <p><strong>Función de la Interfaz:</strong> Permite consultar la información almacenada en el sistema mediante solicitudes REST (HTTP GET). Provee alternancia entre la vista de Estudiantes y la vista de Cursos, un buscador reactivo instantáneo por cédula o nombre, un modal interactivo con el desglose de notas parciales y un inspector técnico que expone los datos de la petición REST efectuada.</p>
+    <div class="screenshot-card">
+        <img src="{img2}" alt="Interfaz 2 - Consulta de Información">
+        <div class="screenshot-cap">Figura 2: Interfaz 2 - Consulta de Información (Catálogo Reactivo y Búsqueda vía HTTP GET)</div>
+    </div>
 </div>
 
-<div class="page-break"></div>
+<!-- PÁGINA 4: INTERFACES (3 y 4) (RÚBRICA SECCIÓN 9) -->
+<div class="page">
+    <h1>3. Interfaces (Parte 2: Gestión y Operaciones Especiales)</h1>
 
-<h2>3.3 Interfaz 3: Gestión Académica CRUD (Ruta: <code>/gestion</code>)</h2>
-<p><strong>Propósito:</strong> Demuestra las operaciones mutativas del protocolo REST. Provee 4 formularios específicos para: registro de nuevos estudiantes (<code>POST</code>), formalización de matrículas (<code>POST</code>), asentamiento y ponderación de calificaciones (<code>PUT</code>) y desafiliación de expedientes (<code>DELETE</code>), con retroalimentación inmediata en UI mediante toasts.</p>
-<div class="screenshot-card">
-    <img src="{img3}" alt="Interfaz 3 - Gestión REST CRUD">
-    <div class="screenshot-cap">Figura 3: Interfaz 3 (Módulo de Operaciones Mutativas REST: POST, PUT y DELETE)</div>
+    <h2>3.3 Interfaz 3: Registro / Gestión de Información (Ruta: <code>/gestion</code>)</h2>
+    <p><strong>Función de la Interfaz:</strong> Permite crear, modificar y gestionar la información académica del sistema a través de las operaciones mutativas del protocolo REST. Contiene cuatro formularios específicos para registrar estudiantes (POST), formalizar matrículas (POST), asentar y actualizar calificaciones (PUT) y tramitar la baja de estudiantes (DELETE), con retroalimentación visual inmediata mediante mensajes de éxito y error.</p>
+    <div class="screenshot-card">
+        <img src="{img3}" alt="Interfaz 3 - Registro / Gestión de Información">
+        <div class="screenshot-cap">Figura 3: Interfaz 3 - Registro / Gestión de Información (Operaciones CRUD REST: POST, PUT y DELETE)</div>
+    </div>
+
+    <h2>3.4 Interfaz 4: Operaciones Especiales / Reportes (Ruta: <code>/reportes</code>)</h2>
+    <p><strong>Función de la Interfaz:</strong> Implementa las operaciones avanzadas del sistema mediante RPC y Servicios Web. Permite ejecutar remotamente el cálculo de promedio ponderado y la estadística de rendimiento de grupo (RPC), así como homologar estudiantes extranjeros consultando datos geográficos y calculando aranceles en tiempo real (Servicio Web GraphQL), mostrando en vivo las tramas técnicas enviadas y recibidas.</p>
+    <div class="screenshot-card">
+        <img src="{img4}" alt="Interfaz 4 - Operaciones Especiales / Reportes">
+        <div class="screenshot-cap">Figura 4: Interfaz 4 - Operaciones Especiales / Reportes (Procedimientos RPC y Servicio Web GraphQL)</div>
+    </div>
 </div>
 
-<h2>3.4 Interfaz 4: RPC y Servicios Web (Ruta: <code>/reportes</code>)</h2>
-<p><strong>Propósito:</strong> Espacio especializado donde convergen la ejecución remota de funciones algorítmicas (JSON-RPC 2.0) y la integración del servicio web externo (GraphQL). Incluye consolas técnicas que despliegan en crudo las tramas de petición y respuesta intercambiadas por la red.</p>
-<div class="screenshot-card">
-    <img src="{img4}" alt="Interfaz 4 - RPC y Servicios Web">
-    <div class="screenshot-cap">Figura 4: Interfaz 4 (Invocación JSON-RPC 2.0 y Consumo de Servicio Web GraphQL)</div>
-</div>
+<!-- PÁGINA 5: REST (RÚBRICA SECCIÓN 9) -->
+<div class="page">
+    <h1>4. REST</h1>
 
-<div class="page-break"></div>
+    <h2>4.1 Endpoints Utilizados y Métodos HTTP Implementados</h2>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Método</th>
+                <th>Endpoint</th>
+                <th>Propósito / Descripción</th>
+                <th>Código HTTP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="badge badge-get">GET</span></td>
+                <td><code>/api/academico/dashboard</code></td>
+                <td>Retorna los 4 KPIs globales y estado del sistema</td>
+                <td><span class="badge badge-status">200 OK</span></td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-get">GET</span></td>
+                <td><code>/api/academico/estudiantes</code></td>
+                <td>Retorna lista de estudiantes con notas y cursos</td>
+                <td><span class="badge badge-status">200 OK</span></td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-get">GET</span></td>
+                <td><code>/api/academico/estudiantes/:id</code></td>
+                <td>Consulta expediente individual por cédula</td>
+                <td><span class="badge badge-status">200 / 404</span></td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-get">GET</span></td>
+                <td><code>/api/academico/cursos</code></td>
+                <td>Retorna catálogo de asignaturas y cupos</td>
+                <td><span class="badge badge-status">200 OK</span></td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-post">POST</span></td>
+                <td><code>/api/academico/estudiantes</code></td>
+                <td>Crea un nuevo estudiante en archivo plano</td>
+                <td><span class="badge badge-status">201 / 400</span></td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-post">POST</span></td>
+                <td><code>/api/academico/matriculas</code></td>
+                <td>Formaliza matrícula verificando cupo activo</td>
+                <td><span class="badge badge-status">201 / 400</span></td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-put">PUT</span></td>
+                <td><code>/api/academico/calificaciones</code></td>
+                <td>Actualiza notas y calcula promedio ponderado</td>
+                <td><span class="badge badge-status">200 / 400</span></td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-delete">DELETE</span></td>
+                <td><code>/api/academico/estudiantes/:id</code></td>
+                <td>Elimina estudiante y matrículas en cascada</td>
+                <td><span class="badge badge-status">200 / 404</span></td>
+            </tr>
+        </tbody>
+    </table>
 
-<!-- SECCION 4: EVIDENCIAS REST -->
-<h1>4. Evidencias de Solicitudes REST (Semana 2)</h1>
-<p>El servicio REST está estructurado en <code>rest/academicoRoutes.js</code> y orquestado por la capa de lógica <code>services/academicoService.js</code>, garantizando persistencia transaccional en archivos planos dentro de <code>data/</code>.</p>
+    <h2>4.2 Información Enviada e Información Recibida</h2>
+    <ul>
+        <li><strong>Consultas GET:</strong> Parámetros en URL (ej. <code>:id</code> con la cédula). Servidor devuelve 200 OK y el arreglo/objeto JSON respectivo.</li>
+        <li><strong>Alta de Estudiantes (POST):</strong> Cliente envía JSON con <code>id</code>, <code>nombre</code>, <code>carrera</code>, <code>pais</code>, <code>codigoPais</code>. Servidor valida, persiste y retorna 201 Created con el expediente generado.</li>
+        <li><strong>Matrícula (POST):</strong> Cliente envía <code>estudianteId</code> y <code>cursoId</code>. Servidor valida cupo disponible, persiste y retorna 201 Created.</li>
+        <li><strong>Calificaciones (PUT):</strong> Cliente envía notas parciales (Parcial 1: 25%, Parcial 2: 25%, Proyecto: 30%, Labs: 20%). Servidor actualiza y responde 200 OK.</li>
+        <li><strong>Eliminación (DELETE):</strong> Parámetro en URL. Servidor remueve expediente y sus vínculos en cascada, retornando confirmación 200 OK.</li>
+    </ul>
 
-<h2>4.1 Matriz de Endpoints Implementados</h2>
-<table class="data-table">
-    <thead>
-        <tr>
-            <th>Método</th>
-            <th>Endpoint</th>
-            <th>Propósito del Servicio</th>
-            <th>Respuesta Exitosa</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><span class="badge badge-get">GET</span></td>
-            <td><code>/api/academico/dashboard</code></td>
-            <td>Retorna los 4 KPIs agregados y estado general del sistema</td>
-            <td><span class="badge badge-status">200 OK</span></td>
-        </tr>
-        <tr>
-            <td><span class="badge badge-get">GET</span></td>
-            <td><code>/api/academico/estudiantes</code></td>
-            <td>Lista expedientes con cálculo consolidado de promedios</td>
-            <td><span class="badge badge-status">200 OK</span></td>
-        </tr>
-        <tr>
-            <td><span class="badge badge-get">GET</span></td>
-            <td><code>/api/academico/estudiantes/:id</code></td>
-            <td>Consulta de expediente individual por número de cédula</td>
-            <td><span class="badge badge-status">200 OK</span></td>
-        </tr>
-        <tr>
-            <td><span class="badge badge-post">POST</span></td>
-            <td><code>/api/academico/estudiantes</code></td>
-            <td>Crea un nuevo estudiante en el registro permanente</td>
-            <td><span class="badge badge-status">201 Created</span></td>
-        </tr>
-        <tr>
-            <td><span class="badge badge-post">POST</span></td>
-            <td><code>/api/academico/matriculas</code></td>
-            <td>Asigna un estudiante a un curso activo verificando cupo</td>
-            <td><span class="badge badge-status">201 Created</span></td>
-        </tr>
-        <tr>
-            <td><span class="badge badge-put">PUT</span></td>
-            <td><code>/api/academico/calificaciones</code></td>
-            <td>Actualiza evaluaciones parciales y recalcula promedio</td>
-            <td><span class="badge badge-status">200 OK</span></td>
-        </tr>
-        <tr>
-            <td><span class="badge badge-delete">DELETE</span></td>
-            <td><code>/api/academico/estudiantes/:id</code></td>
-            <td>Elimina expediente y matrículas asociadas en cascada</td>
-            <td><span class="badge badge-status">200 OK</span></td>
-        </tr>
-    </tbody>
-</table>
-
-<h2>4.2 Ejemplo de Petición y Respuesta HTTP REST</h2>
-<p><strong>Solicitud de Alta (POST /api/academico/estudiantes):</strong></p>
-<div class="code-box">POST /api/academico/estudiantes HTTP/1.1
+    <h2>4.3 Ejemplos de Solicitudes y Respuestas</h2>
+    <div class="cols-2">
+        <div>
+            <p><strong>Solicitud de Alta (POST /api/academico/estudiantes):</strong></p>
+            <div class="code-box">POST /api/academico/estudiantes HTTP/1.1
 Host: localhost:3000
 Content-Type: application/json
 
 {{
   "id": "1-0999-0888",
   "nombre": "Carlos Mora Alvarado",
-  "carrera": "Ingeniería en Sistemas de Información",
+  "carrera": "Informática",
   "pais": "Costa Rica",
   "codigoPais": "CR"
 }}</div>
-
-<p><strong>Respuesta Recibida (HTTP 201 Created):</strong></p>
-<div class="code-box">HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8
+        </div>
+        <div>
+            <p><strong>Respuesta del Servidor (HTTP 201 Created):</strong></p>
+            <div class="code-box">HTTP/1.1 201 Created
+Content-Type: application/json
 
 {{
   "metodo": "POST",
-  "recurso": "/api/academico/estudiantes",
   "status": 201,
-  "mensaje": "Estudiante registrado satisfactoriamente en el SGA.",
+  "mensaje": "Estudiante registrado con éxito.",
   "datos": {{
     "id": "1-0999-0888",
     "nombre": "Carlos Mora Alvarado",
-    "carrera": "Ingeniería en Sistemas de Información",
-    "nivel": "I Nivel",
     "email": "109990888@est.una.ac.cr",
-    "pais": "Costa Rica",
-    "codigoPais": "CR",
     "estado": "Activo"
   }}
 }}</div>
+        </div>
+    </div>
+</div>
 
-<!-- SECCION 5: EVIDENCIAS RPC -->
-<h1>5. Evidencias de la Implementación RPC (Semana 3)</h1>
-<p>Conforme al código y conceptos analizados en la Semana 3, la invocación de procedimientos remotos (RPC) no opera sobre URLs de recursos estáticos, sino mediante el envío de un sobre estructurado hacia un punto de entrada único (<code>POST /api/rpc</code>), transportando el método a ejecutar y sus parámetros correspondientes.</p>
+<!-- PÁGINA 6: RPC (RÚBRICA SECCIÓN 9) -->
+<div class="page">
+    <h1>5. RPC</h1>
 
-<h2>5.1 Especificación JSON-RPC 2.0 Implementada</h2>
-<ul>
-    <li><strong>Método 1: <code>calcularPromedioPonderado</code></strong>: Recibe la identificación de un estudiante, consulta en el servidor todos sus cursos matriculados, pondera la nota final por los créditos curriculares respectivos, suma el total de créditos y clasifica la condición académica del estudiante (Excelencia con Honor, Sobresaliente, Regular o Alerta).</li>
-    <li><strong>Método 2: <code>analizarRendimientoGrupo</code></strong>: Recibe el código de una materia (o vacío para global), iterando la cohorte para calcular la media aritmética, varianza, desviación estándar poblacional y tasa de aprobación porcentual.</li>
-</ul>
+    <h2>5.1 Funcionalidad Implementada</h2>
+    <p>Se implementó un despachador formal bajo el estándar <strong>JSON-RPC 2.0</strong> en la ruta <code>/api/rpc</code>, el cual atiende dos procedimientos algorítmicos integrados en la lógica académica del sistema:</p>
+    <ul>
+        <li><strong><code>calcularPromedioPonderado</code>:</strong> Realiza el cómputo formal del promedio ponderado multiplicando la calificación final por los créditos curriculares de cada materia matriculada, dividiendo entre los créditos totales y clasificando la condición de honor.</li>
+        <li><strong><code>analizarRendimientoGrupo</code>:</strong> Procesa el análisis estadístico de la cohorte matriculada (global o por asignatura), calculando media aritmética, varianza, desviación estándar poblacional y tasa de aprobación.</li>
+    </ul>
 
-<p><strong>Trama Enviada (JSON-RPC Request):</strong></p>
-<div class="code-box">POST /api/rpc HTTP/1.1
+    <h2>5.2 Cómo se Realiza la Llamada RPC</h2>
+    <p>El cliente despacha una solicitud HTTP <code>POST</code> hacia el endpoint único <code>/api/rpc</code> con un sobre JSON conteniendo los cuatro campos requeridos por el estándar: <code>jsonrpc: "2.0"</code>, <code>method</code> con el nombre de la función, <code>params</code> con los argumentos requeridos, y un <code>id</code> numérico correlativo.</p>
+
+    <h2>5.3 Parámetros Enviados y 5.4 Resultado Obtenido</h2>
+    <div class="cols-2">
+        <div>
+            <p><strong>Trama Enviada (JSON-RPC Request):</strong></p>
+            <div class="code-box">POST /api/rpc HTTP/1.1
 Host: localhost:3000
 Content-Type: application/json
 
 {{
   "jsonrpc": "2.0",
   "method": "calcularPromedioPonderado",
-  "params": {{ "estudianteId": "3-0529-0253" }},
+  "params": {{
+    "estudianteId": "3-0529-0253"
+  }},
   "id": 101
 }}</div>
-
-<p><strong>Resultado Obtenido (JSON-RPC Response):</strong></p>
-<div class="code-box">HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
+        </div>
+        <div>
+            <p><strong>Resultado Obtenido (JSON-RPC Response):</strong></p>
+            <div class="code-box">HTTP/1.1 200 OK
+Content-Type: application/json
 
 {{
   "jsonrpc": "2.0",
   "result": {{
     "estudianteId": "3-0529-0253",
     "nombre": "Marcos Román Valverde",
-    "carrera": "Ingeniería en Sistemas de Información",
-    "totalCursos": 2,
     "creditosTotales": 8,
     "creditosAprobados": 8,
     "promedioPonderado": 94.0,
-    "condicionAcademica": "Excelencia Académica (Honor)",
+    "condicionAcademica": "Excelencia (Honor)",
     "desgloseCursos": [
-      {{ "cursoId": "EIF-401", "creditos": 4, "notaFinal": 96.2, "ponderacion": 384.8, "estado": "Aprobado" }},
-      {{ "cursoId": "EIF-402", "creditos": 4, "notaFinal": 91.8, "ponderacion": 367.2, "estado": "Aprobado" }}
+      {{ "cursoId": "EIF-401", "cred": 4, "nota": 96.2 }},
+      {{ "cursoId": "EIF-402", "cred": 4, "nota": 91.8 }}
     ]
   }},
   "id": 101
 }}</div>
+        </div>
+    </div>
+</div>
 
-<div class="page-break"></div>
+<!-- PÁGINA 7: SERVICIOS WEB (RÚBRICA SECCIÓN 9) -->
+<div class="page">
+    <h1>6. Servicios Web</h1>
 
-<!-- SECCION 6: EVIDENCIAS SERVICIO WEB -->
-<h1>6. Evidencias del Servicio Web (Semana 4)</h1>
+    <h2>6.1 Servicio Implementado / Utilizado</h2>
+    <p>Se integró el <strong>Servicio Web público de Países y Divisas basado en GraphQL</strong> (<code>https://countries.trevorblades.com/</code>), aplicando rigurosamente los conceptos y el código estudiados durante la Semana 4 y el Laboratorio 2 del curso.</p>
 
-<h2>6.1 Servicio Web GraphQL de Países y Divisas</h2>
-<p>Se integró el servicio web público basado en el protocolo <strong>GraphQL</strong> (<code>https://countries.trevorblades.com/</code>), cumpliendo rigurosamente el contenido de la Semana 4 y el Laboratorio 2. Este servicio web permite resolver una necesidad real del SGA: la convalidación de procedencia de estudiantes internacionales de intercambio y la liquidación arancelaria semestral diferenciada.</p>
+    <h2>6.2 Función del Servicio</h2>
+    <p>El servicio web resuelve una necesidad operativa concreta del Sistema de Gestión Académica: la homologación de estudiantes foráneos de intercambio internacional (por ejemplo, el caso de prueba de la estudiante <em>Elena Becker</em> procedente de Alemania). A partir del código de país, el servicio obtiene en tiempo real los datos geográficos oficiales (nombre internacional, bandera emoji, ciudad capital y moneda oficial), permitiendo liquidar automáticamente los aranceles de matrícula diferenciados en dólares ($USD) conforme a la reglamentación institucional.</p>
 
-<h2>6.2 Consulta Declarativa GraphQL Utilizada</h2>
-<div class="code-box">query ObtenerPaisesConvenio {{
+    <h2>6.3 Datos Enviados y Recibidos</h2>
+    <div class="cols-2">
+        <div>
+            <p><strong>Datos Enviados (Consulta GraphQL):</strong></p>
+            <div class="code-box">query ObtenerPaisesConvenio {{
   countries {{
     code
     name
@@ -513,86 +568,48 @@ Content-Type: application/json; charset=utf-8
     currency
   }}
 }}</div>
+        </div>
+        <div>
+            <p><strong>Datos Recibidos (Estructura JSON):</strong></p>
+            <div class="code-box">{{
+  "data": {{
+    "countries": [
+      {{ "code": "DE", "name": "Germany",
+         "emoji": "🇩🇪", "capital": "Berlin",
+         "currency": "EUR" }},
+      {{ "code": "CR", "name": "Costa Rica",
+         "emoji": "🇨🇷", "capital": "San José",
+         "currency": "CRC" }}
+    ]
+  }}
+}}</div>
+        </div>
+    </div>
 
-<h2>6.3 Resiliencia y Tolerancia a Fallos (Offline Continuity)</h2>
-<p>Para asegurar que durante la evaluación en clase la aplicación no experimente caídas por fallos de conectividad en el aula (Rúbrica punto 2b: <em>"Aplicación web funcional sin errores..."</em>), el módulo <code>services/webService.js</code> implementa un temporizador de 5000 ms y <strong>caché local enriquecida en disco</strong>. Si el servicio remoto no responde, conmuta en 0 ms al respaldo local de forma transparente para el usuario.</p>
-
-<!-- SECCION 7: GUIA DE PRESENTACION DE 15 MINUTOS -->
-<h1>7. Guía y Cronograma de Demostración Presencial (15 Minutos)</h1>
-<p>Plan de distribución cronometrado para la defensa presencial ante el profesor M.Sc. Luis Raúl:</p>
-
-<table class="data-table">
-    <thead>
-        <tr>
-            <th>Bloque / Tiempo</th>
-            <th>Responsable</th>
-            <th>Puntos Rúbrica</th>
-            <th>Acción Concreta en Demostración</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>B1: 00:00 - 02:30</strong></td>
-            <td>Equipo Completo</td>
-            <td>15 pts (4 Interfaces)</td>
-            <td>Presentación del equipo, navegación por las 4 interfaces desde el encabezado común.</td>
-        </tr>
-        <tr>
-            <td><strong>B2: 02:30 - 06:30</strong></td>
-            <td>Emanuel Soto</td>
-            <td>25 pts (REST Operativo)</td>
-            <td>En <code>/gestion</code> crear estudiante (POST 201), matricularlo, calificarlo (PUT 200) y verificar en <code>/consulta</code> (GET).</td>
-        </tr>
-        <tr>
-            <td><strong>B3: 06:30 - 10:00</strong></td>
-            <td>Anthony Cerdas</td>
-            <td>25 pts (RPC Operativo)</td>
-            <td>En <code>/reportes</code> ejecutar promedio ponderado JSON-RPC 2.0 y analítica de cohorte en vivo.</td>
-        </tr>
-        <tr>
-            <td><strong>B4: 10:00 - 13:00</strong></td>
-            <td>Marcos Román</td>
-            <td>20 pts (Servicio Web)</td>
-            <td>En <code>/reportes</code> homologar estudiante extranjera (Alemania) con GraphQL, aranceles y respaldo offline.</td>
-        </tr>
-        <tr>
-            <td><strong>B5: 13:00 - 15:00</strong></td>
-            <td>Equipo Completo</td>
-            <td>15 pts (Integración)</td>
-            <td>Resumen de integración frontend-servicios y sesión de preguntas del profesor.</td>
-        </tr>
-    </tbody>
-</table>
-
-<!-- SECCION 8: BANCO DE RESPUESTAS RAPIDAS -->
-<h1>8. Banco de Preguntas y Respuestas para la Defensa</h1>
-<ul>
-    <li><strong>¿Por qué RPC utiliza HTTP POST en vez de GET?</strong><br>
-    <em>Respuesta:</em> RPC modela la invocación de una acción o cálculo algorítmico remoto con parámetros complejos (<code>params</code>), no el acceso a un identificador uniforme de recurso (URI). Además, el estándar oficial JSON-RPC 2.0 define su transporte sobre POST.</li>
-    <li><strong>¿Dónde y cómo se realiza la persistencia de datos?</strong><br>
-    <em>Respuesta:</em> En archivos planos JSON dentro de la carpeta <code>data/</code> del servidor mediante el módulo nativo <code>fs</code> de Node.js, garantizando atomicidad y serialización de lecturas y escrituras tal como se orientó en clase.</li>
-    <li><strong>¿Qué ventaja ofreció GraphQL frente a REST en el Servicio Web?</strong><br>
-    <em>Respuesta:</em> Elimina el <em>over-fetching</em>. Permite solicitar con exactitud los 5 campos requeridos (código, nombre, bandera, capital, divisa), optimizando el ancho de banda y la velocidad de red.</li>
-</ul>
-
-<div class="page-break"></div>
-
-<!-- SECCION 9: CONCLUSIONES INDIVIDUALES -->
-<h1>9. Conclusiones Individuales de los Integrantes</h1>
-
-<h3>9.1 Conclusión de Marcos Román Valverde (Cédula: 3-0529-0253)</h3>
-<div class="quote-box">
-"El desarrollo del proyecto permitió comprender de manera tangible la distinción operativa entre arquitecturas orientadas a recursos (REST) y modelos orientados a ejecución de funciones remotas (RPC). La implementación de JSON-RPC 2.0 sobre Node.js demostró que desacoplar la lógica de cómputo algorítmico pesado del navegador alivia el procesamiento del cliente y unifica reglas de negocio críticas, como la ponderación de notas por créditos. Asimismo, la estructuración de persistencia en archivos planos mediante Node.js nativo reforzó la importancia del control de concurrencia y la tolerancia a fallos en sistemas distribuidos reales."
+    <h2>6.4 Forma en que se Integra con la Aplicación</h2>
+    <p>La integración se ejecuta mediante el módulo backend <code>services/webService.js</code> en Node.js. Cuando el usuario interactúa con la Interfaz 4 o cuando se consulta la ficha de un estudiante internacional, la aplicación consulta el endpoint GraphQL y expone los datos procesados en la vista.</p>
+    <p>Para asegurar el funcionamiento continuo en el aula y proteger la aplicación ante contingencias de conectividad (cumpliendo con la regla 5a de la rúbrica), el servicio incorpora <strong>tolerancia a fallos</strong> mediante un timeout de 5000 ms y <strong>caché estructurada en disco</strong>. Si la red externa no responde, conmuta en 0 ms al respaldo local sin generar errores ni interrumpir la navegación del usuario.</p>
 </div>
 
-<h3>9.2 Conclusión de Emanuel Soto Cordero (Cédula: 1-1823-0492)</h3>
-<div class="quote-box">
-"La integración del servicio web GraphQL evidenció las ventajas del paradigma de consulta declarativa frente al over-fetching común de ciertas APIs REST tradicionales. Poder solicitar únicamente los campos code, name, capital y currency reduce drásticamente el consumo de ancho de banda y la sobrecarga de serialización entre servidores distribuidos. El proyecto nos capacitó para coordinar servicios heterogéneos y diseñar arquitecturas web resistentes a fallos de conectividad mediante patrones de respaldo local."
-</div>
+<!-- PÁGINA 8: CONCLUSIONES (RÚBRICA SECCIÓN 9) -->
+<div class="page page-last">
+    <h1>7. Conclusiones</h1>
+    <p>Conforme a la rúbrica oficial, a continuación se presentan las conclusiones individuales de cada uno de los integrantes del equipo sobre los aprendizajes adquiridos durante el desarrollo del proyecto:</p>
 
-<h3>9.3 Conclusión de Anthony Cerdas Morales (Cédula: 4-0231-0814)</h3>
-<div class="quote-box">
-"El valor fundamental de este proyecto radicó en consolidar en una única aplicación los conceptos vistos en las Semanas 2, 3 y 4, logrando que el frontend no actúe de manera aislada sino como un consumidor transparente de múltiples protocolos. Entender cómo Express puede servir simultáneamente como API Gateway para llamadas REST, despachador de procedimientos RPC y cliente consumidor de servicios web externos nos brindó una perspectiva práctica de cómo se estructuran las plataformas empresariales en la industria tecnológica."
+    <h2>7.1 Conclusión: Marcos Román Valverde (Cédula: 3-0529-0253)</h2>
+    <div class="quote-box">
+    "El desarrollo del proyecto permitió comprender de manera tangible la distinción operativa entre arquitecturas orientadas a recursos (REST) y modelos orientados a ejecución de funciones remotas (RPC). La implementación de JSON-RPC 2.0 sobre Node.js demostró que desacoplar la lógica de cómputo algorítmico pesado del navegador alivia el procesamiento del cliente y unifica reglas de negocio críticas, como la ponderación de notas por créditos. Asimismo, la estructuración de persistencia en archivos planos mediante Node.js nativo reforzó la importancia del control de concurrencia y la tolerancia a fallos en sistemas distribuidos reales."
+    </div>
+
+    <h2>7.2 Conclusión: Emanuel Soto Cordero (Cédula: 1-1823-0492)</h2>
+    <div class="quote-box">
+    "La integración del servicio web GraphQL evidenció las ventajas del paradigma de consulta declarativa frente al over-fetching común de ciertas APIs REST tradicionales. Poder solicitar únicamente los campos code, name, capital y currency reduce drásticamente el consumo de ancho de banda y la sobrecarga de serialización entre servidores distribuidos. El proyecto nos capacitó para coordinar servicios heterogéneos y diseñar arquitecturas web resistentes a fallos de conectividad mediante patrones de respaldo local."
+    </div>
+
+    <h2>7.3 Conclusión: Anthony Cerdas Morales (Cédula: 4-0231-0814)</h2>
+    <div class="quote-box">
+    "El valor fundamental de este proyecto radicó en consolidar en una única aplicación los conceptos vistos en las Semanas 2, 3 y 4, logrando que el frontend no actúe de manera aislada sino como un consumidor transparente de múltiples protocolos. Entender cómo Express puede servir simultáneamente como API Gateway para llamadas REST, despachador de procedimientos RPC y cliente consumidor de servicios web externos nos brindó una perspectiva práctica de cómo se estructuran las plataformas empresariales en la industria tecnológica."
+    </div>
 </div>
 
 </body>
