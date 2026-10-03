@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Operaciones Especiales y Servicios | SGA Distribuido</title>
     <meta name="description" content="Interfaz de operaciones especiales, procedimientos remotos JSON-RPC 2.0 y consumo de servicios web GraphQL.">
-    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/estilos.css?v=2026-una">
 </head>
 <body>
     <header class="header-principal">
         <div class="header-container">
-            <a href="/" class="brand-title">SGA Distribuido</a>
+            <a href="/" class="brand-title">SGA Distribuido <span class="brand-badge-una">UNA</span></a>
             <nav class="nav-principal" aria-label="Navegación del Sistema">
                 <a href="/" class="nav-link">Dashboard</a>
                 <a href="/consulta" class="nav-link">Consulta REST</a>
@@ -206,6 +206,7 @@
             };
 
             const t0 = performance.now();
+            document.getElementById("resultadoRpcBox").style.display = "none";
             try {
                 const res = await fetch("/api/rpc", {
                     method: "POST",
@@ -213,6 +214,7 @@
                     body: JSON.stringify(solicitudRPC)
                 });
                 const respuestaRPC = await res.json();
+                if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
                 const latencia = Math.round(performance.now() - t0);
 
                 actualizarInspector({
@@ -245,7 +247,7 @@
                                 <div style="font-size:20px; font-weight:600; color:var(--text-primary); margin-top:2px;">${r.creditosAprobados} / ${r.creditosTotales}</div>
                             </div>
                             <div style="background:#ffffff; padding:12px 14px; border-radius:6px; border:1px solid var(--border-color);">
-                                <div style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-muted);">Cursos Matriculados</div>
+                                <div style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-muted);">Cursos Evaluados</div>
                                 <div style="font-size:20px; font-weight:600; color:var(--text-primary); margin-top:2px;">${r.totalCursos}</div>
                             </div>
                         </div>
@@ -271,6 +273,7 @@
             };
 
             const t0 = performance.now();
+            document.getElementById("resultadoRpcBox").style.display = "none";
             try {
                 const res = await fetch("/api/rpc", {
                     method: "POST",
@@ -278,6 +281,7 @@
                     body: JSON.stringify(solicitudRPC)
                 });
                 const respuestaRPC = await res.json();
+                if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
                 const latencia = Math.round(performance.now() - t0);
 
                 actualizarInspector({
@@ -317,6 +321,8 @@
                     `;
                     box.style.display = "block";
                     mostrarToast("Estadísticas calculadas en servidor mediante RPC.", "success");
+                } else if (respuestaRPC.error) {
+                    mostrarToast("Error RPC: " + respuestaRPC.error.message, "error");
                 }
             } catch (err) {
                 mostrarToast("Fallo al ejecutar RPC: " + err.message, "error");
