@@ -1,0 +1,176 @@
+1.Dudas de la clase anterior.
+2.El proyecto está listo, favor recordar retomarlo después del break.
+	-verificar que lo vean en el aula virtual
+3.En lugar de hacer quiz, vamos a hacer una actividad que vale por el quiz de semana 9
+	-Consiste en que:
+		-Se reúnen los grupos ya formados
+			-uno de los miembros expone el tema 
+				-tienen 3 mins para dar la idea
+					-usando los siguientes conceptos:
+						1-Contenedores
+						2-Ámbito, "aplicación de ventas de productos en línea".
+						 
+						Puntos a exponer:
+						 
+						1-Arquitectura
+						2-Fundamentos del ¿por qué?
+						3-Qué limitaciones tendría?
+
+					-hacer análisis crítico
+						-si hay alguien, adicional que quiera hablar, lo puede hacer.
+			-lo anterior:
+				-vamos al break de 15 mins + 10 mins para que trabajen en lo anterior
+					-volvemos 25mins después, directo a exponer el análisis crítico.
+						
+*****************************
+1.Docker - Actividad de escucha activa
+	-es una plataforma
+	-qué permite?
+			-crear
+			-ejecutar
+			-administrar
+		-Apps dentro de contenedores.
+	-Contenedor
+		-Ejemplo sin docker:
+			-Computadora
+				-node.js
+				-RabbitMQ
+				-MongoBD
+				-PostgreSQL
+				-Versiones de algún app.
+		-Ejemplo con docker:
+			-Computadora
+				-Docker
+					-Contenedor
+						-node.js
+					-Contenedor
+						-RabbitMQ
+					-Contenedor
+						-MongoBD
+					-Contenedor
+						-PostgreSQL
+					.
+					.
+					.
+	-Ventajas y desventajas de Contenedores(Docker)
+		-Ventajas
+			-Una vez configurado, es "deploy", si esta orientado a "containerized"
+			-Monitoreo, si esta orientado a "containerized"
+			-----------------------
+			1-Eficiencia de recursos
+			2-Portabilidad total
+			3-Velocidad
+			4-Aislamiento
+			5-Consistencia
+			
+		-Desventajas
+			1-Curva de aprendizaje
+			2-Consumo compartido y límites
+			3-Complejidad al crecer 
+			4-Menor seguridad "nativa" -: ojo solo en el caso de compartir
+			5-Conflicto con applicaciones que dependen mucho de una interfaz gráfica
+			
+	-Docker VS Maquina Virtual
+		-Ejemplo:
+			-Docker - ya fue dado el ejemplo anteriormente
+			-Maquina Virtual
+				-Windows
+					-Virtual Box
+						-Ubuntu completo
+							-RabbitMQ
+			-Con Docker el ejemplo anterior sería:
+				-Windows
+					-Docker Desktop
+						-Contenedor RabbitMQ
+	-Conceptos Dentro de Docker importantes
+		-Imagenes
+			-rabbitMq:management
+		-Contenedor
+			-Basado en que es un "entorno aislado", tener una única instancia ejecutándose, a partir de una imagen
+		-Docker Engine
+			-componente
+		-Docker Desktop (dentro)
+			-Docker Engine 
+			-Docker CLI
+			-Docker Compose
+			-Opciones para tener cierta administración de contenedores
+		-Docker Hub
+			
+Nota:
+	-No recomiendo mezclar Docker y Virtual Machines
+	
+	
+---------------------------------------------------------------------------
+Laboratorio
+
+1.ingresar a: 
+	https://docs.docker.com/desktop/setup/install/windows-install/
+2.Seleccionan la opción que el profesor indica.
+	-Asegurese de tener el docker.......exe - listo para usarse
+3.Va a PowerShell - ingresan:
+	-wsl --version
+		-si el comando anterior no le sale nada, solución:
+			-en el mismo PowerShell
+				-wsl --install
+	-wsl --update
+4.Van al instalador:
+		-Docker......exe
+			-esto levanta un wizard
+				-"Configuration"
+					-Per-user Installation
+					-All-User Installation
+						-asegurarse se use "WSL2" en lugar del "Hyper-V"
+						-NO SELECCIONEN:  "Allow Windows Containers"
+					-Asegurarse de tener:
+						-el shortcut en el desktop
+						
+		-va a pedir "restart" la máquina
+5.ir "cmd"
+	-docker --version
+6.Buscar la app en windows:
+	-"Docker Desktop"
+		-hacer logging con cuenta de correo o cuenta personal
+			-si es la primera vez, le pide verificación en su cuenta, y el ingreso de un código para iniciar la primera vez.
+7.ir a PowerShell
+	-verificar la vesión del Compose	
+		-docker compose version
+8.ir a PowerShell
+	-verificar la info del Docker	
+		- docker info
+9.Vamos a instalar RabbitMQ
+	-Windows
+		-Docker Desktop	
+			-Contenedor RabbitMQ
+				-RabbitMQ
+				-AMQP 5672
+				-Management 15672
+		-Node.js + Express
+	
+10.ir a PowerShell
+	-docker pull rabbitmq:management
+		-visualizar que no tenga errores del Hub
+			-y que al final salgo algo como Download.... new image.... "rabbitmq:management"
+	-si todo sale bien, entonces, en teoría tienen una imagen oficial de RabbitMQ.
+		-esta variante de imagen está configurada para usar los puertos:
+			-5672
+			-15672
+11.Comprobar que la imagen realmente exista:
+	-En PowerShell, y ejecutar:
+		-docker images
+			-verificar que le salga "rabbitmq:management"
+12.Vamos a ejecutar la imagen:
+	-Ir a PowerShell, y ejecutar este comando:
+		-docker run -d --hostname rabbitmq-server --name rabbitmq -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin123 -p 5672:5672 -p 15672:15672 rabbitmq:management
+			-verificar que salgan un montón de números, sin errores.
+
+****************************quedamos en este punto, y continuamos en la siguiente clase.
+			
+	
+	
+	
+	
+	
+	
+			
+			
+			

@@ -1,6 +1,8 @@
 # Dependencies
 node_modules/
-*/node_modules/
+**/node_modules/
+.wrangler/
+**/.wrangler/
 package-lock.json.bak
 
 # Python
@@ -33,11 +35,15 @@ Thumbs.db
 desktop.ini
 .idea/
 .vscode/
+.cursor/
 
 # Temporary files
 *.tmp
 *.bak
 ~$*.docx
+~$*.xlsx
+~$*.pptx
 
 # Antigravity Agent Artifacts
 .dev/agents/artifacts/
+

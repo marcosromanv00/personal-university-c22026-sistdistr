@@ -1,3 +1,4 @@
+from pathlib import Path
 import docx
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
@@ -605,4 +606,6 @@ def create_essay_document(output_path):
     print(f"Document successfully created at: {output_path}")
 
 if __name__ == "__main__":
-    create_essay_document("c:/Users/marco/OneDrive/Desktop/Proyectos/2- Activos/3- Otros/personal-university-c22026-sistdistr/ensayo_bases_sistemas_distribuidos.docx")
+    current_dir = Path(__file__).resolve().parent
+    output_docx = current_dir / "ensayo_bases_sistemas_distribuidos.docx"
+    create_essay_document(str(output_docx))

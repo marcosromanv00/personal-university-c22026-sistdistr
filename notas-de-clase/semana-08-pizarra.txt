@@ -1,0 +1,131 @@
+1.Se pregunta si hay dudas de la materia.
+
+
+----------------------------
+
+Continuando el ejemplo de la clase anterior, quedamos en:
+
+"8.crear el archivo "public/js/app.js"  - ingresar el código enviado por teams"
+
+y siguiendo este punto:
+
+9.Verificar que tengan acceso al "cloudFlare"
+	-ir a build/Compute/workers&pages/
+		-todavìa no deberìa aparecer el dominio, se muestra más adelante.
+Nota:
+	-por tiempo, y especificaciones de requerimientos sobre los conceptos a estudiar:
+		-toda plataforma como tal de "CloudFlare" queda para un desarrollo por separado.
+		
+		
+----Aquí comienza la parte de crear ingregración con CloudFlare
+
+
+10.ir a la terminal, ingresar al folder de la app, y ejecutar:
+	-npm create cloudflare@latest cloud-worker
+
+11.Lo anterior genera una serie de preguntas
+	1-responder "y"
+	2-responder "Hello world ...."
+		-estructura básica
+	3-seleccionar la opción que mencione "Cron Trigger" / Scheduled Worker
+	4-seleccionar JavaScript
+	5-luego debe de aparecer algo de "instalación de dependencias"
+	6-pregunta algo sobre "AGENTS.md file", le indican "NO"
+	7-manda información que se esta instalando, dejar que se instale
+	8-pregunta sobre versionamiento, selecciona "NO"
+	9-pregunta sobre hacer "deploy", selecciona "NO"
+	10-dejar que corra las instalaciones
+	11-asegurarse, al final indique "Success"
+
+12.Verifiquen la información que ustedes tienen en el archivo "package.json", con información de su contenido enviado por teams.
+	-en caso de que sea diferente, reemplazar con la información enviada por teams
+	
+13.ir al archivo "cloud-worker/src/index.js"
+	-y reemplazar con código enviado por teams
+	
+14.Tomen nota de como el profesor explica la implementación de la arquitectura de la clase pasada que es:
+						-cómo lo hace?
+							-usuario -----------> Cloudflare
+														-DNS
+														-CDN
+														-Reverse Proxy
+															-SSL
+															-TLS
+														-WAF / Seguridad
+														-DDoS
+														-Otros conceptos relacionados con los anteriores son:
+															-Caching
+															-Load Balancing
+							app/server	<-------------------------	
+	
+15.No es lo mismo la creaciòn de función como parte del código de una app en un ambiente de Sistemas Dis.t, que implementar FaaS donde existe toda una plataforma para trabajar funciones como servicio sin necesidad de administrar servidores, y trabaje como:
+	-CloudFlare como Intermediario: proxy
+	-CloudFlare como Tunnel: conexión directa a servidores
+	
+Nota:
+	-ctx.waitUntil - actividad de escucha activa, poner atención a la explicación del profesor sobre este tema.
+	
+16.en el archivo "cloud-worke/wrangler.jsonc"
+		-y reemplazar con código enviado por teams
+		
+Nota:
+	-sobre "Containers" en CloudFlare
+		-cuando hablamos de "Containers" esta relacionado a Docker.
+			-pero esto no significa que se tenga que administrar Docker por nosotros mismos.
+	-sobre Cron Trigger - actividad de escucha activa, tomen nota.
+		-UTC
+		
+17.ir a la terminal, ingresar al folder de la app, y ejecutar:
+	-e ingresar al folder "cloud-worker"
+		-npm run dev
+			-sale como un menú
+		-actividad de escucha activa: - poner atenciòn y tomar notas
+			PRUEBAS DE FaaS para Eventos, funciones y Trigger a nivel local
+			-ejemplo para hacer reach a FaaS con eventos.
+			-ejemplo para hacer reach a FaaS con funciones.
+			-ejemplo para hacer reach a FaaS con Cron Trigger.
+	
+18.dar "Ctrl+C"
+19.Eventos, funciones y Trigger a nivel local, con el "deploy" de FaaS en Cloud
+	1-ir a la terminal, ingresar al folder de la app, y ejecutar:
+		-e ingresar al folder "cloud-worker", y correr:
+			-npx wrangler login
+				-deben de ir a la terminal y corroborar siempbre, que obtenga un mensaje similar a "Successfully Logged in."
+	2-ir a la terminal, ingresar al folder de la app, y ejecutar:
+		-e ingresar al folder "cloud-worker", y correr:
+			-npm run deploy
+				-si no tienen el subdominio lo crean, en la opción que le muestra el "wrangler"
+					1-cuando le sale un mensaje sobre registrar el domino, oprimen "Y"
+					2-le va a preguntar algo como como que se acceda al dominio:
+						-por ejemplo, "fullengineer"
+						-confirmar sobre la creación, "Yes" o "Y"
+						-VERIFICAR SIEMPRE EN LA TERMINAL salga el mensaje "Success"
+
+20.Ir a al "CloudFlare" y verificar el "deploy" subdominio de su implementación.
+						
+21.ir a la terminal, ingresar al folder de la app, y ejecutar:
+	-npm run dev
+			
+		
+22.crear el archivo "public/css/estilos.css" - ingresar código enviado por teams
+
+
+Laboratorio a montar en el aula virtual:
+	-Correr la aplicación 
+		-Cambiar de la pantalla principal, ingrese su nombre en el título
+		-Asegurese de mostrar el VS Code enviroment, la aplicación corriendo, y que se vea la terminal
+		-Tome un "ScreeShoot" donde se vea toda la pantalla y la hora.
+		-Subirlo en este link.
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

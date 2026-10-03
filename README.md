@@ -1,54 +1,103 @@
 # Sistemas Distribuidos (C2-2026)
 
-Repositorio que recopila el material, laboratorios prácticos, notas de clase y ensayos teóricos de la materia de **Sistemas Distribuidos**.
+Repositorio centralizado que recopila el material formativo, laboratorios prácticos, notas de clase teóricas, proyecto de curso y ensayos de investigación de la materia de **Sistemas Distribuidos**.
 
 ---
 
 ## Estructura del Repositorio
 
+El repositorio se encuentra organizado de forma modular por categorías funcionales:
+
 ```text
 personal-university-c22026-sistdistr/
-├── Notas de Clase/                                # Apuntes y pizarras de sesiones teóricas (Semanas 1 a 6)
-│   ├── pizarraSemana1-SistemasDistribuidos.txt
-│   ├── pizarraSemana2-SistemasDistribuidos.txt
-│   ├── pizarra-S3.txt
-│   ├── pizarraSemana4.txt
-│   ├── pizarraSemana5.txt
-│   └── pizarraSemana6.txt
-├── s1SDRPC-lab1/                                  # Laboratorio 1: Introducción a Sistemas Distribuidos y RPC
-├── s4SD-lab2/                                     # Laboratorio 2: Comunicación entre procesos y sockets
-├── s5SD-lab3/                                     # Laboratorio 3: Servicios distribuidos y persistencia
-├── s6SD-lab4/                                     # Laboratorio 4: Comunicación en tiempo real y microservicios
-├── s7SD-lab5/                                     # Laboratorio 5: Integración distribuida, APIs y balanceo
-├── ensayo_bases_sistemas_distribuidos.html        # Ensayo sobre fundamentos de sistemas distribuidos (HTML)
-├── ensayo_bases_sistemas_distribuidos.docx        # Ensayo en formato Word (.docx)
-├── generate_essay_docx.py                         # Script en Python generador del documento Word
-└── .gitignore                                     # Exclusiones de dependencias y temporales
+├── laboratorios/                                  # Prácticas y desarrollos semanales en Node.js, Express y Edge
+│   ├── s1SDRPC-lab1/                             # Lab 1: Introducción a SD y JSON-RPC (Ethereum & Solana)
+│   ├── s4SD-lab2/                                # Lab 2: Consultas declarativas con GraphQL (Countries & Rick and Morty)
+│   ├── s5SD-lab3/                                # Lab 3: Orquestación financiera y resiliencia (Promise.allSettled)
+│   ├── s6-7SD-lab4/                              # Lab 4: Microfrontends satelitales NASA (Web Components & Shadow DOM)
+│   ├── s7-8SD-lab5/                              # Lab 5: Edge Computing y Serverless con Cloudflare Workers
+│   ├── s8SD-lab6/                                # Lab 6: Consolidación Serverless y preparación de entorno
+│   └── s9SD-lab7/                                # Lab 7: Contenedores y mensajería distribuida (Docker & RabbitMQ)
+├── notas-de-clase/                               # Pizarras virtuales y notas teóricas de cada sesión
+│   ├── semana-01-pizarra.txt
+│   ├── semana-02-pizarra.txt
+│   ├── semana-03-pizarra.txt
+│   ├── semana-04-pizarra.txt
+│   ├── semana-05-pizarra.txt
+│   ├── semana-06-pizarra.txt
+│   ├── semana-08-pizarra.txt
+│   └── semana-09-pizarra.txt
+├── ensayos/                                      # Producción académica formal y generador automatizado
+│   ├── ensayo_bases_sistemas_distribuidos.html   # Ensayo en formato web enriquecido
+│   ├── ensayo_bases_sistemas_distribuidos.docx   # Ensayo formal en formato Word (.docx)
+│   └── generate_essay_docx.py                    # Script de compilación programática del documento Word
+├── proyecto/                                     # Especificaciones y entregables del proyecto de curso
+│   ├── Proyecto.pdf                              # Especificación y rúbrica oficial del proyecto
+│   └── README.md                                 # Guía y lineamientos del proyecto
+├── .gitignore                                    # Exclusiones de dependencias, temporales y builds
+└── README.md                                     # Documentación principal del repositorio
 ```
 
 ---
 
-## Tecnologías y Requisitos
+## Laboratorios Prácticos
 
-- **Node.js** (v18 o superior) y **npm**
-- **Python** (v3.10 o superior) y paquetes `python-docx` para la generación de documentos
+| Laboratorio | Semanas | Directorio | Tecnologías | Conceptos Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| **Lab 1** | S1 | [s1SDRPC-lab1](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/laboratorios/s1SDRPC-lab1) | Node.js, Express, Axios | JSON-RPC 2.0, blockchain pública (Ethereum, Solana), llamadas a procedimientos remotos. |
+| **Lab 2** | S4 | [s4SD-lab2](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/laboratorios/s4SD-lab2) | Node.js, Express, GraphQL | Over-fetching / under-fetching, consultas declarativas, APIs de países y Rick & Morty. |
+| **Lab 3** | S5 | [s5SD-lab3](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/laboratorios/s5SD-lab3) | Node.js, Express, APIs Financieras | Tolerancia a fallos, resiliencia con `Promise.allSettled`, orquestación de servicios (CoinGecko, Frankfurter). |
+| **Lab 4** | S6-7 | [s6-7SD-lab4](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/laboratorios/s6-7SD-lab4) | Web Components, Shadow DOM, NASA APIs | Microfrontends nativos, aislamiento de estilos, NASA POWER & GIBS satelital. |
+| **Lab 5** | S7-8 | [s7-8SD-lab5](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/laboratorios/s7-8SD-lab5) | Cloudflare Workers, Wrangler, Express | Edge Computing, arquitectura Serverless/FaaS, Cron Triggers planificados. |
+| **Lab 6** | S8 | [s8SD-lab6](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/laboratorios/s8SD-lab6) | Cloudflare Workers, Node.js | Consolidación y despliegue del worker serverless en producción. |
+| **Lab 7** | S9 | [s9SD-lab7](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/laboratorios/s9SD-lab7) | Docker Desktop, WSL2, RabbitMQ | Contenedores distribuidos, puertos AMQP 5672 y Management 15672. |
 
 ---
 
-## Ejecución de Laboratorios
+## Ensayos y Producción Teórica
 
-Para ejecutar cualquiera de los laboratorios basados en Node.js / Express:
+Ubicados en el directorio [ensayos](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/ensayos):
 
-1. Navegue al directorio del laboratorio deseado:
-   ```bash
-   cd s1SDRPC-lab1   # o s4SD-lab2, s5SD-lab3, s6SD-lab4, s7SD-lab5
-   ```
-2. Instale las dependencias locales:
-   ```bash
-   npm install
-   ```
-3. Inicie el servidor:
-   ```bash
-   npm start
-   # o bien: node app.js / node server.js según corresponda
-   ```
+- **Ensayo Web:** [ensayo_bases_sistemas_distribuidos.html](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/ensayos/ensayo_bases_sistemas_distribuidos.html) — Lectura interactiva con diagramas, tablas comparativas y citas bibliográficas en estándar APA.
+- **Ensayo en Documento Formal:** [ensayo_bases_sistemas_distribuidos.docx](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/ensayos/ensayo_bases_sistemas_distribuidos.docx) — Formateado con estándares editoriales, tablas estilizadas, sangría francesa y tipografía formal.
+- **Compilador Python:** [generate_essay_docx.py](file:///c:/Users/marco/OneDrive/Desktop/Proyectos/2-%20Activos/3-%20Otros/personal-university-c22026-sistdistr/ensayos/generate_essay_docx.py) — Script automatizado que genera el archivo Word a partir de la especificación técnica.
+
+Para recompilar el documento Word:
+```bash
+python ensayos/generate_essay_docx.py
+```
+
+---
+
+## Guía de Ejecución
+
+### Requisitos Previos
+- **Node.js:** v18.0 o superior
+- **Docker Desktop:** con backend WSL2 activo (para laboratorios de contenedores)
+- **Python:** v3.10 o superior (con paquete `python-docx` para generación de documentos)
+
+### Ejecutar un Laboratorio de Node.js
+```bash
+# 1. Ingresar al directorio del laboratorio
+cd laboratorios/s1SDRPC-lab1    # o s4SD-lab2, s5SD-lab3, s6-7SD-lab4, s7-8SD-lab5
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Iniciar el servidor
+npm start
+# O bien: node app.js / node server.js según corresponda
+```
+
+### Ejecutar el Contenedor de RabbitMQ (Lab 7)
+```bash
+docker run -d \
+  --hostname rabbitmq-server \
+  --name rabbitmq \
+  -e RABBITMQ_DEFAULT_USER=admin \
+  -e RABBITMQ_DEFAULT_PASS=admin123 \
+  -p 5672:5672 \
+  -p 15672:15672 \
+  rabbitmq:management
+```
+Acceso a la consola web: `http://localhost:15672` (Credenciales: `admin` / `admin123`).

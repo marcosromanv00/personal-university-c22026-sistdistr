@@ -1,0 +1,321 @@
+/* ==============================================
+   CONFIGURACIÓN GENERAL
+============================================== */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #000000,
+            #243b55
+        );
+
+}
+
+
+/* ==============================================
+   HEADER
+============================================== */
+
+header {
+
+    text-align: center;
+
+    color: white;
+
+    padding: 35px;
+
+    /* Animación de entrada */
+
+    animation: aparecer 1s ease;
+
+}
+
+
+header h1 {
+
+    margin-bottom: 10px;
+
+}
+
+
+/* ==============================================
+   CONTENEDOR
+============================================== */
+
+.contenedor {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
+    gap: 20px;
+
+}
+
+
+/* ==============================================
+   TARJETAS
+============================================== */
+
+.tarjeta {
+
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.3);
+
+
+    /* Animación inicial */
+
+    animation:
+        aparecerTarjeta
+        0.8s ease;
+
+
+    /* Permite transiciones suaves */
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+
+}
+
+
+/* ==============================================
+   ANIMACIÓN HOVER
+============================================== */
+
+.tarjeta:hover {
+
+    /* La tarjeta sube */
+
+    transform:
+        translateY(-10px);
+
+
+    box-shadow:
+        0 20px 40px
+        rgba(0, 0, 0, 0.4);
+
+}
+
+
+/* ==============================================
+   NÚMERO
+============================================== */
+
+.numero {
+
+    width: 50px;
+
+    height: 50px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    background: #243b55;
+
+    font-size: 22px;
+
+}
+
+
+/* ==============================================
+   BOTONES
+============================================== */
+
+button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #5a636f;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        opacity 0.3s;
+
+}
+
+
+/* Animación al pasar el mouse */
+
+button:hover {
+
+    transform:
+        scale(1.05);
+
+    opacity: 0.9;
+
+}
+
+
+/* Animación al hacer click */
+
+button:active {
+
+    transform:
+        scale(0.95);
+
+}
+
+
+/* ==============================================
+   RESULTADO
+============================================== */
+
+.resultado {
+
+    grid-column: 1 / -1;
+
+    background: white;
+
+    margin-top: 10px;
+
+    margin-bottom: 30px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+}
+
+
+/* ==============================================
+   CLASE PARA ANIMACIÓN DESDE JAVASCRIPT
+============================================== */
+
+.animar {
+
+    animation:
+        resultadoAnimado
+        0.6s ease;
+
+}
+
+
+/* ==============================================
+   KEYFRAMES
+============================================== */
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes aparecerTarjeta {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.8);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes resultadoAnimado {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.8);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
